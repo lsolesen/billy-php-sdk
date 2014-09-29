@@ -1,0 +1,20 @@
+{
+  "name": "billysbilling",
+    "type": "library",
+    "description": "PHP-SDK to communicate with BillysBilling",
+    "homepage": "http://github.com/lsolesen/billysbilling",
+    "authors": [
+        {
+            "name": "Lars Olesen",
+            "email": "lars@intraface.dk"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.2.2",
+    }
+}
