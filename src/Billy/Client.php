@@ -125,10 +125,52 @@ class Billy_Request
         $res = curl_exec($c);
         $body = json_decode($res);
         $info = curl_getinfo($c);
-        return (object)array(
-            'status' => $info['http_code'],
-            'body' => $body
-        );
+
+        return new Billy_Response($info, $body);
+    }
+}
+
+/**
+ * BillysBilling: response.
+ *
+ * @category  BillysBilling
+ * @package   BillysBilling
+ * @author    Lars Olesen <lars@intraface.dk>
+ * @copyright 2014 Lars Olesen
+ * @license   http://opensource.org/licenses/bsd-license.php New BSD License
+ * @link      http://github.com/lsolesen/billysbilling
+ */
+class Billy_Response
+{
+    protected $status;
+    protected $body;
+
+    /**
+     * Construct a Billy Request with an API key and an API version.
+     *
+     * @param array $info Info about the response
+     * @param array $body Body of the response
+     */
+    public function __construct($info, $body)
+    {
+        $this->info = $info;
+        $this->body = $body;
+    }
+
+    /**
+     * Get the response body
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * Get the status code
+     */
+    public function isSuccess()
+    {
+        return ($this->info['http_code'] === 200);
     }
 }
 
@@ -160,7 +202,7 @@ class Billy_Client
      * Get method
      *
      * @param string $url Url on the REST service
-     * 
+     *
      * @return array
      */
     function get($url)
@@ -173,7 +215,7 @@ class Billy_Client
      *
      * @param string $url  Url on the REST service
      * @param array  $body Parameters for the request
-     * 
+     *
      * @return array
      */
     function post($url, $body)

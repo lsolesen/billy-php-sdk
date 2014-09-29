@@ -7,53 +7,69 @@ class ClientTest extends PHPUnit_Framework_TestCase {
   protected $contactId;
   protected $organizationId;
 
-  function getClient($key) {
+  function getClient($key)
+  {
     $request = new Billy_Request($key);
     return new Billy_Client($request);
   }
 
-  function testConstructor() {
+  function testConstructor()
+  {
     $invalid_api_key = 'invalid';
     $client = $this->getClient($invalid_api_key);
     $this->assertTrue(is_object($client));
   }
 
-  function testGet() {
+  function getOrganisation()
+  {
     $client = $this->getClient($this->api_key);
     $res = $client->get("/organization");
-    if ($res->status !== 200) {
+    if (!$res->isSuccess()) {
       echo "Something went wrong:\n\n";
-      print_r($res->body);
+      print_r($res->getBody());
       exit;
     }
-    //print_r($res->body);
-    $this->organizationId = $res->body->organization->id;
+    return $this->organizationId = $res->getBody()->organization->id;
+  }
 
-    //Create a contact
+  function addContact($organisation_id)
+  {
     $client = $this->getClient($this->api_key);
     $res = $client->post("/contacts", array(
       'contact' => array(
-        'organizationId' => $this->organizationId,
+        'organizationId' => $organisation_id,
         'name' => "Arnold",
         'countryId' => "DK"
       )
     ));
-    if ($res->status !== 200) {
+    if (!$res->isSuccess()) {
       echo "Something went wrong:\n\n";
-      print_r($res->body);
+      print_r($res->getBody());
       exit;
     }
-    $this->contactId = $res->body->contacts[0]->id;
 
+    return $this->contactId = $res->getBody()->contacts[0]->id;
+  }
+
+  function getContact($contact_id)
+  {
     $client = $this->getClient($this->api_key);
     //Get the contact again
     $res = $client->get("/contacts/" . $this->contactId);
-    if ($res->status !== 200) {
+    if (!$res->isSuccess()) {
       echo "Something went wrong:\n\n";
-      print_r($res->body);
+      print_r($res->getBody());
       exit;
     }
-    //print_r($res->body);
+    return $res->getBody();
   }
 
+  function testGet() {
+    $organisation_id = $this->getOrganisation();
+    $contact_id = $this->addContact($organisation_id);
+    $result = $this->getContact($contact_id);
+
+    $this->assertEquals($result->contact->name, 'Arnold');
+    $this->assertEquals($result->contact->organizationId, 'ROcPwhmSQ9STgSrOQw1OoQ');
+  }
 }
