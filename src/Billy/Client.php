@@ -126,7 +126,7 @@ class Billy_Request
         $body = json_decode($res);
         $info = curl_getinfo($c);
 
-        return new Billy_Response($info, $body);
+        return new Billy_Response($info, $res);
     }
 }
 
@@ -164,7 +164,7 @@ class Billy_Response
      */
     public function getBody()
     {
-        return $this->body;
+        return $this->interpretResponse($this->body);
     }
 
     /**
@@ -175,6 +175,24 @@ class Billy_Response
     public function isSuccess()
     {
         return ($this->info['http_code'] === 200);
+    }
+
+    /**
+     * Takes a raw JSON response and decodes it. If an error is met, throw an exception. Else return array.
+     *
+     * @param string $rawResponse JSON encoded array
+     *
+     * @return array Response from Billy API, e.g. id and success or invoice object
+     * @throws Billy_Exception Error, Help URL and response
+     */
+    private function interpretResponse($rawResponse)
+    {
+        $response = json_decode($rawResponse);
+        if (!$response->meta->success) {
+            throw new Billy_Exception($response->error, $response->helpUrl, $rawResponse);
+        }
+
+        return $response;
     }
 }
 
