@@ -159,6 +159,8 @@ class Billy_Response
 
     /**
      * Get the response body
+     *
+     * @return object stdClass
      */
     public function getBody()
     {
@@ -167,6 +169,8 @@ class Billy_Response
 
     /**
      * Get the status code
+     *
+     * @return object stdClass
      */
     public function isSuccess()
     {
