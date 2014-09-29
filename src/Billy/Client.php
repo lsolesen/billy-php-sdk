@@ -178,14 +178,16 @@ class Billy_Response
     }
 
     /**
-     * Takes a raw JSON response and decodes it. If an error is met, throw an exception. Else return array.
+     * Takes a raw JSON response and decodes it. If an error is met,
+     * throw an exception. Else return array.
      *
      * @param string $rawResponse JSON encoded array
      *
-     * @return array Response from Billy API, e.g. id and success or invoice object
+     * @return array Response from Billy API, e.g. id and success
+     * or invoice object
      * @throws Billy_Exception Error, Help URL and response
      */
-    private function interpretResponse($rawResponse)
+    protected function interpretResponse($rawResponse)
     {
         $response = json_decode($rawResponse);
         if (!$response->meta->success) {
