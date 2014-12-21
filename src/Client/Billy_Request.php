@@ -63,7 +63,6 @@ class Billy_Request
         }
         curl_setopt($c, CURLOPT_HTTPHEADER, $headers);
         $res = curl_exec($c);
-        $body = json_decode($res);
         $info = curl_getinfo($c);
 
         return new Billy_Response($info, $res);

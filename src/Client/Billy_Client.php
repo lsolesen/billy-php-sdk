@@ -27,12 +27,17 @@ namespace BillysBilling\Client;
  */
 class Billy_Client
 {
+    /**
+     * Request object.
+     *
+     * @var Billy_Request
+     */
     protected $request;
 
     /**
      * Construct a Billy Client with an API key and optionally an API version.
      *
-     * @param object $request Request object
+     * @param Billy_Request $request Request object
      */
     public function __construct($request)
     {
@@ -44,7 +49,7 @@ class Billy_Client
      *
      * @param string $url Url on the REST service
      *
-     * @return array
+     * @return Billy_Response
      */
     function get($url)
     {
@@ -57,7 +62,7 @@ class Billy_Client
      * @param string $url  Url on the REST service
      * @param array  $body Parameters for the request
      *
-     * @return array
+     * @return Billy_Response
      */
     function post($url, $body)
     {

@@ -78,7 +78,7 @@ class Billy_Response
     {
         $response = json_decode($rawResponse);
         if (!$response->meta->success) {
-            throw new Billy_Exception($response->error, $response->helpUrl);
+            throw new Billy_Exception($response->errorMessage, $response->helpUrl);
         }
 
         return $response;
