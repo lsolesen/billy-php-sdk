@@ -10,8 +10,13 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "": "src/"
+        "psr-4": {
+            "BillysBilling\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "BillysBilling\\Tests\\": "tests"
         }
     },
     "require": {
