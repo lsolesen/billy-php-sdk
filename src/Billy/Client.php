@@ -191,7 +191,7 @@ class Billy_Response
     {
         $response = json_decode($rawResponse);
         if (!$response->meta->success) {
-            throw new Billy_Exception($response->error, $response->helpUrl, $rawResponse);
+            throw new Billy_Exception($response->error, $response->helpUrl);
         }
 
         return $response;
@@ -246,4 +246,19 @@ class Billy_Client
     {
         return $this->request->call('POST', $url, $body);
     }
+}
+
+/**
+ * BillysBilling: exception.
+ *
+ * @category  BillysBilling
+ * @package   BillysBilling
+ * @author    Lars Olesen <lars@intraface.dk>
+ * @copyright 2014 Lars Olesen
+ * @license   http://opensource.org/licenses/bsd-license.php New BSD License
+ * @link      http://github.com/lsolesen/billysbilling
+ */
+class Billy_Exception extends Exception
+{
+
 }
