@@ -85,7 +85,7 @@ class Billy_Client
     /**
      * Delete method
      *
-     * @param string $url  Url on the REST service
+     * @param string $url Url on the REST service
      *
      * @return Billy_Response
      */
