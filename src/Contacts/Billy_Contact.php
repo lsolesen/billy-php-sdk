@@ -15,39 +15,15 @@
 
 namespace BillysBilling\Contacts;
 
-class Billy_Contact {
-  /**
-   * @var \stdClass
-   */
-  protected $contact;
+use BillysBilling\Billy_Entity;
 
-  public function __construct($contact = null) {
-    if ($contact) {
-      $this->contact = $contact;
-    }
-    else {
-      $this->contact = new \stdClass();
-    }
+class Billy_Contact extends Billy_Entity {
 
-    return $this;
-  }
-
-  public function toArray() {
-    return (array) $this->contact;
-  }
-
-  public function get($property) {
-    if (!isset($this->contact->{$property})) {
-      throw new \Exception('Unknown contact API property');
-    }
-
-    return $this->contact->{$property};
-  }
-
-  public function set($property, $value) {
-    $this->contact->{$property} = $value;
-
-    return $this;
+  public function requiredProperties() {
+    return array(
+      'name',
+      'countryId',
+    );
   }
 
   public function getID() {

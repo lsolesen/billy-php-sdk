@@ -50,14 +50,23 @@ class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testUpdateContact() {
-    $this->testContact->set('fax', '555-444-3333');
-    $this->contactRepository->updateContact($this->testContact);
-    $contact = $this->contactRepository->getContact($this->testContact->getID());
-    $this->assertEquals('555-444-3333', $contact->get('fax'));
-
+    if ($this->testContact instanceof Billy_Contact) {
+      $this->testContact->set('fax', '555-444-3333');
+      $this->contactRepository->updateContact($this->testContact);
+      $contact = $this->contactRepository->getContact($this->testContact->getID());
+      $this->assertEquals('555-444-3333', $contact->get('fax'));
+    }
+    else {
+      $this->fail('Test contact not defined');
+    }
   }
 
   public function testDeleteContact() {
-    $this->contactRepository->deleteContact($this->testContact->getID());
+    if ($this->testContact instanceof Billy_Contact) {
+      $this->contactRepository->deleteContact($this->testContact->getID());
+    }
+    else {
+      $this->fail('Test contact not defined');
+    }
   }
 }

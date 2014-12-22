@@ -94,14 +94,10 @@ class Billy_ContactRepository {
   public function createContact($contact) {
     // API requires at least name and country ID.
     try {
-      $name = $contact->getName();
-      $countryID = $contact->getCountryID();
-      if (!$name || !$countryID) {
-        throw new Billy_Exception('Name and country ID are required for new contacts', 'https://dev.billysbilling.dk/api/v1/contacts/create');
-      }
+      $contact->validate();
     }
     catch (Billy_Exception $e) {
-      throw $e;
+      throw new Billy_Exception('Name and country ID are required for new contacts', 'https://dev.billysbilling.dk/api/v1/contacts/create');
     }
 
     $contactData = array('contact' => $contact->toArray());
