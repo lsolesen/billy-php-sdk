@@ -16,6 +16,7 @@
 namespace BillysBilling\Accounts;
 
 use BillysBilling\Billy_EntityRepository;
+use BillysBilling\Client\Billy_Request;
 use BillysBilling\Exception\Billy_Exception;
 
 /**
@@ -32,12 +33,15 @@ class Billy_AccountGroupsRepository extends Billy_EntityRepository
 {
     /**
      * Defines API information for endpoint.
+     *
+     * @param Billy_Request $request Request object
      */
-    public function __construct()
+    public function __construct($request)
     {
         $this->url = '/accountGroups';
         $this->recordKey = 'accountGroup';
         $this->recordKeyPlural = 'accountGroups';
+        $this->request = $request;
     }
 
     /**
