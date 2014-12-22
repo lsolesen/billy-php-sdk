@@ -32,6 +32,10 @@ class Billy_Contact {
     return $this;
   }
 
+  public function toArray() {
+    return (array) $this->contact;
+  }
+
   public function get($property) {
     if (!isset($this->contact->{$property})) {
       throw new \Exception('Unknown contact API property');
@@ -44,5 +48,25 @@ class Billy_Contact {
     $this->contact->{$property} = $value;
 
     return $this;
+  }
+
+  public function getID() {
+    return $this->get('id');
+  }
+
+  public function getName() {
+    return $this->get('name');
+  }
+
+  public function setName($string) {
+    return $this->set('name', $string);
+  }
+
+  public function getCountryID() {
+    return $this->get('countryId');
+  }
+
+  public function setCountryID($string) {
+    return $this->set('countryId', $string);
   }
 }

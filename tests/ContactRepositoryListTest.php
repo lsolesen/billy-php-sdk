@@ -28,13 +28,36 @@ class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase {
 
   public function testGetContacts() {
     $contacts = $this->contactRepository->listContacts();
-    // Get first contact for further testing.
-    $contact = reset($contacts);
-    $this->testContactID = $contact->get('id');
+    $this->assertNotEmpty($contacts);
+  }
+
+  public function testCreateContact() {
+    $new_contact = new Billy_Contact();
+    $new_contact->setName('Billy McBillster');
+    $new_contact->setCountryID('DK');
+    $new_contact->set('phone', '555-555-5555');
+
+    $this->testContactID = $this->contactRepository->createContact($new_contact);
+    $this->assertNotEmpty($this->testContactID, 'Contact created returned an ID');
   }
 
   public function testGetContact() {
     $contact = $this->contactRepository->getContact($this->testContactID);
+    $this->assertNotEmpty($contact, 'Contact retrieved was not empty.');
+    $this->assertEquals($contact->getName(), 'Billy McBillster', 'Retrieved contact name matches.');
+    $this->assertEquals($contact->getCountryID(), 'DK', 'Retrieved contact country ID matches.');
     $this->testContact = $contact;
+  }
+
+  public function testUpdateContact() {
+    $this->testContact->set('fax', '555-444-3333');
+    $this->contactRepository->updateContact($this->testContact);
+    $contact = $this->contactRepository->getContact($this->testContact->getID());
+    $this->assertEquals('555-444-3333', $contact->get('fax'));
+
+  }
+
+  public function testDeleteContact() {
+    $this->contactRepository->deleteContact($this->testContact->getID());
   }
 }

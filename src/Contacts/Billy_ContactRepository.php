@@ -77,31 +77,70 @@ class Billy_ContactRepository {
   public function getContact($contactID) {
     $response = $this->client->get('/contacts/' . $contactID);
     if ($response->isSuccess()) {
-      return new Billy_Contact($response->getBody());
+      return new Billy_Contact($response->getBody()->contact);
     }
     else {
-      throw new Billy_Exception('Invalid contact ID.');
+      throw new Billy_Exception($response->getBody()->errorMessage, $response->getBody()->helpURL);
     }
   }
 
   /**
    * @param Billy_Contact $contact
+   *
+   * @return mixed The contact's ID
+   * @throws Billy_Exception
+   * @throws \Exception
    */
   public function createContact($contact) {
+    // API requires at least name and country ID.
+    try {
+      $name = $contact->getName();
+      $countryID = $contact->getCountryID();
+      if (!$name || !$countryID) {
+        throw new Billy_Exception('Name and country ID are required for new contacts', 'https://dev.billysbilling.dk/api/v1/contacts/create');
+      }
+    }
+    catch (Billy_Exception $e) {
+      throw $e;
+    }
 
+    $contactData = array('contact' => $contact->toArray());
+    $response = $this->client->post('/contacts', $contactData);
+    if ($response->isSuccess()) {
+      return $response->getBody()->contacts[0]->id;
+    }
+    else {
+     throw new Billy_Exception('There was an error creating the contact.');
+    }
   }
 
   /**
    * @param Billy_Contact $contact
    */
   public function updateContact($contact) {
-
+    $contactData = array('contact' => $contact->toArray());
+    $response = $this->client->put('/contacts/' . $contact->getID(), $contactData);
+    if ($response->isSuccess()) {
+      return $response->getBody()->contacts[0]->id;
+    }
+    else {
+      throw new Billy_Exception('There was an error creating the contact.');
+    }
   }
 
   /**
    * @param string $contactID
+   * @return \stdClass[] Archived or Deleted accounts.
+   * @throws Billy_Exception
    */
   public function deleteContact($contactID) {
-
+    $response = $this->client->delete('/contacts/' . $contactID);
+    if ($response->isSuccess()) {
+      // Returns group of deleted or archived contacts.
+      return $response->getBody();
+    }
+    else {
+      throw new Billy_Exception($response->getBody()->errorMessage, $response->getBody()->helpURL);
+    }
   }
 }

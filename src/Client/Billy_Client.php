@@ -68,4 +68,29 @@ class Billy_Client
     {
         return $this->request->call('POST', $url, $body);
     }
+
+    /**
+     * Put method
+     *
+     * @param string $url  Url on the REST service
+     * @param array  $body Parameters for the request
+     *
+     * @return Billy_Response
+     */
+    function put($url, $body)
+    {
+        return $this->request->call('PUT', $url, $body);
+    }
+
+    /**
+     * Delete method
+     *
+     * @param string $url  Url on the REST service
+     *
+     * @return Billy_Response
+     */
+    function delete($url)
+    {
+        return $this->request->call('DELETE', $url);
+    }
 }
