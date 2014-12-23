@@ -34,10 +34,13 @@ class SalesTaxRulesetTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testSalesTaxRulesetGetAll() {
+
         $repository = $this->testSalesTaxRulesetsRepositoryConstruct();
         $results = $repository->getAll();
-        $this->assertNotEmpty($results, 'Sales tax rules returned results');
+        $this->assertNotEmpty($results, 'Sales tax ruleset returned results');
+
         return $this->salesTaxRuleset = $results;
+
     }
 
     public function testSalesTaxRulesGetSingle() {

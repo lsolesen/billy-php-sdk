@@ -115,7 +115,7 @@ class Billy_EntityRepository extends Billy_Client
     {
         if ($object->validate()) {
             $data = array($this->recordKey => $object->toArray());
-            $response = $this->put($this->url, $data);
+            $response = $this->put($this->url . '/' . $object->getID(), $data);
             $this->validateResponse($response);
 
             return $response->getBody();
@@ -135,7 +135,7 @@ class Billy_EntityRepository extends Billy_Client
      */
     public function delete($apiID)
     {
-        $response = $this->delete($this->url, $apiID);
+        $response = parent::delete($this->url. '?ids[]=' . $apiID);
         $this->validateResponse($response);
         return $response->getBody();
     }

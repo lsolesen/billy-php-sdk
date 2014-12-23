@@ -33,11 +33,12 @@ class Billy_SalesTaxRulesetsRepository extends Billy_EntityRepository
     /**
      * Defines API information for endpoint.
      */
-    public function __construct()
+    public function __construct($request)
     {
         $this->url = '/salesTaxRulesets';
         $this->recordKey = 'salesTaxRuleset';
         $this->recordKeyPlural = 'salesTaxRulesets';
+        $this->request = $request;
     }
 
     /**

@@ -15,7 +15,8 @@
 
 namespace BillysBilling\Contacts;
 
-use BillysBilling\Client\Billy_Client;
+use BillysBilling\Billy_EntityRepository;
+use BillysBilling\Client\Billy_Request;
 use BillysBilling\Exception\Billy_Exception;
 
 /**
@@ -28,150 +29,61 @@ use BillysBilling\Exception\Billy_Exception;
  * @license   http://opensource.org/licenses/bsd-license.php New BSD License
  * @link      http://github.com/lsolesen/billysbilling
  */
-class Billy_ContactRepository
+class Billy_ContactRepository extends Billy_EntityRepository
 {
 
     /**
-     * API Client object
-     * @var Billy_Client;
-     */
-    protected $client;
-
-    /**
-     * Initiates repository with an API client.
+     * Defines API information for endpoint.
      *
-     * @param Billy_Client $client API Client
+     * @param Billy_Request $request Request object
      */
-    public function __construct($client)
+    public function __construct($request)
     {
-        $this->client = $client;
+        $this->url = '/contacts';
+        $this->recordKey = 'contact';
+        $this->recordKeyPlural = 'contacts';
+        $this->request = $request;
     }
 
     /**
      * Lists contacts.
      *
-     * @param string $search Search string
-     * @param bool   $exact  If the search string is an exact record ID
-     *
      * @return Billy_Contact[]
      * @throws Billy_Exception
      */
-    public function listContacts($search = null, $exact = false)
+    public function getAll()
     {
-        $queryString = '/contacts';
-
-        // Determine the query parameters.
-        if ($search && !$exact) {
-            $queryString .= '?q=' . urlencode($search);
-        } elseif ($search && $exact) {
-            $queryString .= '?externalId=' . urlencode($search);
+        $response = parent::getAll();
+        $contacts = array();
+        foreach ($response as $key => $contact) {
+            $contacts[$contact->id] = new Billy_Contact($contact);
         }
-
-        $response = $this->client->get($queryString);
-        if ($response->isSuccess()) {
-            $contacts = array();
-            foreach ($response->getBody()->contacts as $key => $data) {
-                $contacts[$data->id] = new Billy_Contact($data);
-            }
-        } else {
-            throw new Billy_Exception('Unable to retrieve contacts list.');
-        }
-
         return $contacts;
     }
 
     /**
-     * Retrieves a contact from the API.
+     * Returns a contact
      *
-     * @param string $contactID Contact ID
+     * @param string $id API ID
      *
      * @return Billy_Contact
-     * @throws Billy_Exception
      */
-    public function getContact($contactID)
+    public function getSingle($id)
     {
-        $response = $this->client->get('/contacts/' . $contactID);
-        if ($response->isSuccess()) {
-            return new Billy_Contact($response->getBody()->contact);
-        } else {
-            throw new Billy_Exception(
-                $response->getBody()->errorMessage,
-                $response->getBody()->helpURL
-            );
-        }
+        $response = parent::getSingle($id);
+        return new Billy_Contact($response);
     }
 
     /**
-     * Creates a contact
+     * Create an item through an object endpoint.
      *
-     * @param Billy_Contact $contact Contact entity object
+     * @param Billy_Contact $object API Entity object
      *
-     * @return mixed The contact's ID
-     * @throws Billy_Exception
-     * @throws \Exception
+     * @return Billy_Contact
      */
-    public function createContact($contact)
+    public function create($object)
     {
-        // API requires at least name and country ID.
-        try {
-            $contact->validate();
-        } catch (Billy_Exception $e) {
-            throw new Billy_Exception(
-                'Name and country ID are required for new contacts',
-                'https://dev.billysbilling.dk/api/v1/contacts/create'
-            );
-        }
-
-        $contactData = array('contact' => $contact->toArray());
-        $response = $this->client->post('/contacts', $contactData);
-        if ($response->isSuccess()) {
-            return $response->getBody()->contacts[0]->id;
-        } else {
-            throw new Billy_Exception('There was an error creating the contact.');
-        }
-    }
-
-    /**
-     * Update a contact
-     *
-     * @param Billy_Contact $contact Contact entity object
-     *
-     * @return mixed Contact ID
-     * @throws Billy_Exception
-     */
-    public function updateContact($contact)
-    {
-        $contactData = array('contact' => $contact->toArray());
-        $response = $this->client->put(
-            '/contacts/' . $contact->getID(),
-            $contactData
-        );
-        if ($response->isSuccess()) {
-            return $response->getBody()->contacts[0]->id;
-        } else {
-            throw new Billy_Exception('There was an error creating the contact.');
-        }
-    }
-
-    /**
-     * Deletes a contact
-     *
-     * @param string $contactID Contact ID
-     *
-     * @return \stdClass[] Archived or Deleted accounts.
-     * @throws Billy_Exception
-     */
-    public function deleteContact($contactID)
-    {
-        $response = $this->client->delete('/contacts/' . $contactID);
-        if ($response->isSuccess()) {
-            // Returns group of deleted or archived contacts.
-            return $response->getBody();
-        } else {
-            throw new Billy_Exception(
-                $response->getBody()->errorMessage,
-                $response->getBody()->helpURL
-            );
-        }
+        $response = parent::create($object);
+        return new Billy_Contact($response->{$this->recordKeyPlural}[0]);
     }
 }
