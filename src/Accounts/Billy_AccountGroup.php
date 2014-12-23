@@ -46,11 +46,11 @@ class Billy_AccountGroup extends Billy_Entity
 
     public function getOrganization() {
         // @todo: This should return an organization entity object.
-        return $this->get('organization');
+        return $this->get('organizationId');
     }
 
     public function setOrganization($organizationID) {
-        return $this->set('organization', $organizationID);
+        return $this->set('organizationId', $organizationID);
     }
 
     public function getNature() {
