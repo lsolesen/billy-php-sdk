@@ -44,12 +44,27 @@ class Billy_AccountGroup extends Billy_Entity
         );
     }
 
-    public function getOrganization() {
+    /**
+     * Returns AccountGroup organization ID
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getOrganization()
+    {
         // @todo: This should return an organization entity object.
         return $this->get('organizationId');
     }
 
-    public function setOrganization($organizationID) {
+    /**
+     * Sets the Organization ID for the AccountGroup
+     *
+     * @param string $organizationID API ID
+     *
+     * @return $this
+     */
+    public function setOrganization($organizationID)
+    {
         return $this->set('organizationId', $organizationID);
     }
 
