@@ -16,6 +16,7 @@
 namespace BillysBilling\SalesTaxRules;
 
 use BillysBilling\Billy_EntityRepository;
+use BillysBilling\Client\Billy_Request;
 use BillysBilling\Exception\Billy_Exception;
 
 /**
@@ -32,6 +33,8 @@ class Billy_SalesTaxRulesetsRepository extends Billy_EntityRepository
 {
     /**
      * Defines API information for endpoint.
+     *
+     * @param Billy_Request $request Request object
      */
     public function __construct($request)
     {

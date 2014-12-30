@@ -16,10 +16,15 @@
 namespace BillysBilling\SalesTaxRules;
 
 use BillysBilling\Billy_EntityRepository;
+use BillysBilling\Client\Billy_Request;
 use BillysBilling\Exception\Billy_Exception;
 
 /**
- * Class Billy_AccountNaturesRepository
+ * Class Billy_SalesTaxRulesRepository
+ *
+ * @todo: Rules are to be queries by a ruleset ID
+ *         "You need to filter the list by `rulesetId`, i.e. by using
+ *        `GET /salesTaxRules?rulesetId=123`."
  *
  * @category  BillysBilling
  * @package   BillysBilling
@@ -32,16 +37,21 @@ class Billy_SalesTaxRulesRepository extends Billy_EntityRepository
 {
     /**
      * Defines API information for endpoint.
+     *
+     * @param Billy_Request $request Request object
      */
-    public function __construct()
+    public function __construct($request)
     {
         $this->url = '/salesTaxRules';
         $this->recordKey = 'salesTaxRule';
         $this->recordKeyPlural = 'salesTaxRules';
+        $this->request = $request;
     }
 
     /**
-     * Returns all account tax rules.
+     * Returns all account tax rules for a rule set.
+     *
+     * @todo: should should require a ?rulesetId=API_ID parameter.
      *
      * @return Billy_SalesTaxRule[]
      * @throws Billy_Exception

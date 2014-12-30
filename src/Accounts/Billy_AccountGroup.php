@@ -16,7 +16,6 @@
 namespace BillysBilling\Accounts;
 
 use BillysBilling\Billy_Entity;
-use BillysBilling\Organization\Billy_Organization;
 
 /**
  * Class Billy_AccountGroup
@@ -47,49 +46,72 @@ class Billy_AccountGroup extends Billy_Entity
     /**
      * Returns AccountGroup organization ID
      *
+     * @note: Marked as immutable by the API.
+     *
      * @return mixed
      * @throws \Exception
      */
     public function getOrganization()
     {
-        // @todo: This should return an organization entity object.
         return $this->get('organizationId');
     }
 
     /**
-     * Sets the Organization ID for the AccountGroup
+     * Returns the nature ID of the account group.
      *
-     * @param string $organizationID API ID
+     * @note: Marked as immutable by API.
      *
-     * @return $this
+     * @return mixed
+     * @throws \Exception
      */
-    public function setOrganization($organizationID)
+    public function getNature() 
     {
-        return $this->set('organizationId', $organizationID);
+        return $this->get('natureId');
     }
 
-    public function getNature() {
-        // @todo: This should return a loaded Billy_AccountNature.
-        return $this->get('nature');
-    }
-
-    public function setNature($natureID) {
-        return $this->set('nature', $natureID);
-    }
-
-    public function getName() {
+    /**
+     * Returns the account group's name
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getName() 
+    {
         return $this->get('name');
     }
 
-    public function setName($string) {
+    /**
+     * Set the account group's name.
+     *
+     * @param string $string Group name
+     *
+     * @return $this
+     */
+    public function setName($string) 
+    {
         return $this->set('name', $string);
     }
 
-    public function getDescription() {
+    /**
+     * Returns the account group's description.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getDescription() 
+    {
         return $this->get('description');
     }
 
-    public function setDescription($string) {
+    /**
+     * Sets the account group's description.
+     *
+     * @param string $string Group description
+     *
+     * @return $this
+     */
+    public function setDescription($string) 
+    {
         return $this->set('description', $string);
     }
 

@@ -106,7 +106,7 @@ class Billy_EntityRepository extends Billy_Client
     /**
      * Updates an item through an object endpoint.
      *
-     * @param Billy_Entity $object    API Entity object
+     * @param Billy_Entity $object API Entity object
      *
      * @return mixed
      * @throws \Exception
