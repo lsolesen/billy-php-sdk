@@ -15,7 +15,6 @@
 
 namespace BillysBilling\Accounts;
 
-use BillysBilling\Accounts\Billy_Account;
 use BillysBilling\Billy_EntityRepository;
 use BillysBilling\Client\Billy_Request;
 use BillysBilling\Exception\Billy_Exception;

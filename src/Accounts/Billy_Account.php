@@ -16,7 +16,6 @@
 namespace BillysBilling\Accounts;
 
 use BillysBilling\Billy_Entity;
-use BillysBilling\Organization\Billy_Organization;
 
 /**
  * Class Billy_Account
@@ -43,113 +42,271 @@ class Billy_Account extends Billy_Entity
         );
     }
 
-    public function getOrganization() {
-        // @todo: This should return an organization entity object.
-        return $this->get('organization');
+    /**
+     * Returns the Organization API ID the account belongs to.
+     *
+     * @note: Marked as immutable by the API.
+     *
+     * @return string
+     * @throws \Exception
+     */
+    public function getOrganization()
+    {
+        return $this->get('organizationId');
     }
 
-    public function setOrganization(Billy_Organization $organization) {
-        return $this->set('organization', $organization->get('id'));
-    }
-
-    public function getName() {
+    /**
+     * Returns the name for the account.
+     *
+     * @return string
+     * @throws \Exception
+     */
+    public function getName()
+    {
         return $this->get('name');
     }
 
-    public function setName($string) {
+    /**
+     * Sets the account's name.
+     *
+     * @param string $string Name to set
+     *
+     * @return $this
+     */
+    public function setName($string)
+    {
         return $this->set('name', $string);
     }
 
-    public function getAccountNo() {
+    /**
+     * Returns the account number
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getAccountNo()
+    {
         return $this->get('accountNo');
     }
 
-    public function setAccountNo($int) {
+    /**
+     * Sets the account's number
+     *
+     * @param int $int Account number
+     *
+     * @return $this
+     */
+    public function setAccountNo($int)
+    {
         return $this->set('accountNo', $int);
     }
 
-    public function getDescription() {
+    /**
+     * Returns the account's description
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getDescription()
+    {
         return $this->get('description');
     }
 
-    public function setDescription($string) {
+    /**
+     * Sets the account's description
+     *
+     * @param string $string Account description
+     *
+     * @return $this
+     */
+    public function setDescription($string)
+    {
         return $this->set('description', $string);
     }
 
-    public function getGroup() {
-        // @todo: This should return a loaded Billy_AccountGroup.
-        return $this->get('group');
+    /**
+     * Returns the group ID this account belongs to
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getGroup()
+    {
+        return $this->get('groupId');
     }
 
-    public function setGroup(Billy_AccountGroup $group) {
-        return $this->set('group', $group->getID());
+    /**
+     * Sets an account's group ID.
+     *
+     * @param string $apiID Group ID
+     *
+     * @return $this
+     */
+    public function setGroup($apiID)
+    {
+        return $this->set('groupId', $apiID);
     }
 
-    public function getNature() {
-        // @todo: This should return a loaded Billy_AccountNature.
-        return $this->get('nature');
+    /**
+     * Returns the nature ID the account belongs to.
+     *
+     * @note: Marked as immutable by API, defaults to "unknown."
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getNature()
+    {
+        return $this->get('natureId');
     }
 
-    public function setNature(Billy_AccountNature $nature) {
-        return $this->set('nature', $nature->getID());
-    }
-
-    public function getSystemRole() {
+    /**
+     * Return the account's system role.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getSystemRole()
+    {
         return $this->get('systemRole');
     }
 
-    public function setSystemRole($enum) {
+    /**
+     * Set the system role for the account
+     *
+     * @param array $enum System roles
+     *
+     * @return $this
+     */
+    public function setSystemRole($enum)
+    {
         return $this->set('systemRole', $enum);
     }
 
-    // @todo: currency belongs-to, need entity object handler
-    // @todo: taxRate belongs-to, need entity object handler
+    /**
+     * Returns the currency ID used by the account
+     *
+     * @note: Marked as immutable by the API/
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getCurrency()
+    {
+        return $this->get('currencyId');
+    }
 
-    public function isPaymentEnabled() {
+    /**
+     * Returns the account's tax rate ID.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getTaxRateID()
+    {
+        return $this->get('taxRateId');
+    }
+
+    /**
+     * Sets the account's tax rate ID
+     *
+     * @param string $apiID Tax rate ID
+     *
+     * @return $this
+     */
+    public function setTaxRateID($apiID)
+    {
+        return $this->set('taxRateId', $apiID);
+    }
+
+    /**
+     * Returns boolean on payments enabled.
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function isPaymentEnabled()
+    {
         return (bool) $this->get('isPaymentEnabled');
     }
 
-    public function setPaymentsEnabled($bool) {
-        return $this->set('isPaymentEnabled', (bool) $bool);
-    }
-
-    public function isBankAccount() {
+    /**
+     * Returns boolean if account is a bank account.
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function isBankAccount()
+    {
         return (bool) $this->get('isBankAccount');
     }
 
-    public function setIsBankAccount($bool) {
-        return $this->set('isBankAccount', (bool) $bool);
-    }
-
-    public function isArchived() {
+    /**
+     * Returns boolean is account is archived.
+     *
+     * Items which cannot be deleted, for information integrity, become marked
+     * instead as archived.
+     *
+     * @return bool
+     * @throws \Exception
+     */
+    public function isArchived()
+    {
         return (bool) $this->get('isArchived');
     }
 
-    public function setIsArchived($bool) {
-        return $this->set('isArchived', (bool) $bool);
-    }
-
-    public function getBankName() {
+    /**
+     * Returns the bank name of the account
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getBankName()
+    {
         return $this->get('bankName');
     }
 
-    public function getBankRoutingNo() {
+    /**
+     * Returns the bank routing number of the account
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getBankRoutingNo()
+    {
         return $this->get('bankRoutingNo');
     }
 
-    public function getBankAccountNo() {
+    /**
+     * Returns the bank account number of the account
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getBankAccountNo()
+    {
         return $this->get('bankAccountNo');
     }
 
-    public function getBankSwift() {
+    /**
+     * Returns the bank SWIFT codes
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getBankSwift()
+    {
         return $this->get('bankSwift');
     }
 
-    public function getBankIBan() {
+    /**
+     * Returns the bank IBAN codes
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getBankIBan()
+    {
         return $this->get('bankIban');
-    }
-
-    public function getCommentAssociations() {
-        return $this->get('commentAssociations');
     }
 }
