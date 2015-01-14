@@ -12,4 +12,4 @@ install:
 script:
 
   - phpunit ./tests
-  - phpcs src
+  - ./vendor/bin/phpcs src
