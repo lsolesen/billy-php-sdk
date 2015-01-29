@@ -55,7 +55,6 @@ class ProductsRepositoryTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertEquals('Test Product Creation', $createdProduct->getName());
         $this->assertEquals('12345', $createdProduct->getProductNo());
-
     }
 
     public function testProductsRepositoryGetAll() {
@@ -70,7 +69,7 @@ class ProductsRepositoryTest extends \PHPUnit_Framework_TestCase {
     public function testProductsRepositoryGetSingle() {
         /** @var Billy_Product $firstContact */
         $products = $this->testProductsRepositoryGetAll();
-        $firstProduct = reset($products);
+        $firstProduct = end($products);
 
         $productsRepository = $this->testProuctsRepositoryConstruct();
         $product = $productsRepository->getSingle($firstProduct->getID());
