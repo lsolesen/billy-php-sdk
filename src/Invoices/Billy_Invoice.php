@@ -185,9 +185,6 @@ class Billy_Invoice extends Billy_Entity
      */
     public function setInvoiceNo($no)
     {
-        if ($this->getInvoiceNo()) {
-            throw new Billy_Exception('Cannot change an existing invoice number');
-        }
         return $this->set('invoiceNo', $no);
     }
 

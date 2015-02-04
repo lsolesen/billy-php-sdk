@@ -176,7 +176,7 @@ class Billy_Product extends Billy_Entity
      */
     public function getSalesTaxRuleset()
     {
-        return $this->get('salesTaxRuleset');
+        return $this->get('salesTaxRulesetId');
     }
 
     /**
@@ -188,7 +188,7 @@ class Billy_Product extends Billy_Entity
      */
     public function setSalesTaxRuleset($apiID)
     {
-        return $this->set('salesTaxRuleset', $apiID);
+        return $this->set('salesTaxRulesetId', $apiID);
     }
 
     /**

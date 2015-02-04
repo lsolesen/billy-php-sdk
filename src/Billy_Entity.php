@@ -105,7 +105,7 @@ class Billy_Entity
     public function get($property)
     {
         if (!isset($this->entity->{$property})) {
-            throw new \Exception('Unknown API entity property');
+            throw new \Exception('Unknown API entity property: ' . $property);
         }
 
         return $this->entity->{$property};
