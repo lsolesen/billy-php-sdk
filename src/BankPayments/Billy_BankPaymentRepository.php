@@ -13,14 +13,14 @@
  * @link      http://github.com/lsolesen/billysbilling
  */
 
-namespace BillysBilling\Invoices;
+namespace BillysBilling\BankPayments;
 
 use BillysBilling\Billy_EntityRepository;
 use BillysBilling\Client\Billy_Request;
 use BillysBilling\Exception\Billy_Exception;
 
 /**
- * Class Billy_ProductsRepository
+ * Class Billy_BankPaymentRepository
  *
  * @category  BillysBilling
  * @package   BillysBilling
@@ -29,8 +29,9 @@ use BillysBilling\Exception\Billy_Exception;
  * @license   http://opensource.org/licenses/bsd-license.php New BSD License
  * @link      http://github.com/lsolesen/billysbilling
  */
-class Billy_InvoicesRepository extends Billy_EntityRepository
+class Billy_BankPaymentRepository extends Billy_EntityRepository
 {
+
     /**
      * Defines API information for endpoint.
      *
@@ -38,26 +39,26 @@ class Billy_InvoicesRepository extends Billy_EntityRepository
      */
     public function __construct($request)
     {
-        $this->url = '/invoices';
-        $this->recordKey = 'invoice';
-        $this->recordKeyPlural = 'invoices';
+        $this->url = '/products';
+        $this->recordKey = 'product';
+        $this->recordKeyPlural = 'products';
         $this->request = $request;
     }
 
     /**
      * Returns all account groups.
      *
-     * @return Billy_Invoice[]
+     * @return Billy_BankPayment[]
      * @throws Billy_Exception
      */
     public function getAll()
     {
         $response = parent::getAll();
-        $invoices = array();
-        foreach ($response as $key => $invoice) {
-            $invoices[$invoice->id] = new Billy_Invoice($invoice);
+        $payments = array();
+        foreach ($response as $key => $payment) {
+            $payments[$payment->id] = new Billy_BankPayment($payment);
         }
-        return $invoices;
+        return $payments;
     }
 
     /**
@@ -65,24 +66,24 @@ class Billy_InvoicesRepository extends Billy_EntityRepository
      *
      * @param string $id API ID
      *
-     * @return Billy_Invoice
+     * @return Billy_BankPayment
      */
     public function getSingle($id)
     {
         $response = parent::getSingle($id);
-        return new Billy_Invoice($response);
+        return new Billy_BankPayment($response);
     }
 
     /**
      * Create an item through an object endpoint.
      *
-     * @param Billy_Invoice $object API Entity object
+     * @param Billy_BankPayment $object API Entity object
      *
-     * @return Billy_Invoice
+     * @return mixed
      */
     public function create($object)
     {
         $response = parent::create($object);
-        return new Billy_Invoice($response->{$this->recordKeyPlural}[0]);
+        return new Billy_BankPayment($response->{$this->recordKeyPlural}[0]);
     }
 }

@@ -83,6 +83,12 @@ class Billy_Invoice extends Billy_Entity
         return $this->get('contactId');
     }
 
+    /**
+     * Sets the contact ID this invoice belongs to.
+     *
+     * @param $apiID
+     * @return $this
+     */
     public function setContactID($apiID)
     {
         return $this->set('contactId', $apiID);
@@ -103,6 +109,10 @@ class Billy_Invoice extends Billy_Entity
         return $this->get('entryDate');
     }
 
+    /**
+     * @param \DateTime $dateTime
+     * @return $this
+     */
     public function setEntryDate(\DateTime $dateTime)
     {
         return $this->set('entryDate', $dateTime->format('Y-m-d'));
@@ -128,6 +138,10 @@ class Billy_Invoice extends Billy_Entity
         return $this->get('paymentTermsDays');
     }
 
+    /**
+     * @param $days
+     * @return $this
+     */
     public function setPaymentTermsDays($days)
     {
         return $this->set('paymentTermsDays', $days);
@@ -164,6 +178,11 @@ class Billy_Invoice extends Billy_Entity
         return $this->get('invoiceNo');
     }
 
+    /**
+     * @param $no
+     * @return $this
+     * @throws \BillysBilling\Exception\Billy_Exception
+     */
     public function setInvoiceNo($no)
     {
         if ($this->getInvoiceNo()) {
@@ -197,6 +216,10 @@ class Billy_Invoice extends Billy_Entity
         return $this->get('currencyId');
     }
 
+    /**
+     * @param $apiID
+     * @return $this
+     */
     public function setCurrencyID($apiID)
     {
         return $this->set('currencyId', $apiID);
@@ -222,6 +245,12 @@ class Billy_Invoice extends Billy_Entity
         return $this->get('contactMessage');
     }
 
+    /**
+     * Sets message for invoice.
+     *
+     * @param $message
+     * @return $this
+     */
     public function setContactMessage($message)
     {
         return $this->set('contactMessage', $message);
