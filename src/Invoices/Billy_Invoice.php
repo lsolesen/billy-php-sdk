@@ -36,11 +36,15 @@ class Billy_Invoice extends Billy_Entity
     const SENT_STATE_OPENED = 'opened';
     const SENT_STATE_VIEWED = 'viewed';
 
+    /**
+     * Constructor
+     *
+     * @param object $entity Entity
+     */
     public function __construct($entity = null)
     {
         parent::__construct($entity);
-        if ($entity === null)
-        {
+        if ($entity === null) {
             $this->entity->state = 'draft';
         }
     }
@@ -271,14 +275,12 @@ class Billy_Invoice extends Billy_Entity
      */
     public function setLines($invoiceLines)
     {
-        if ($this->isApproved())
-        {
+        if ($this->isApproved()) {
             throw new Billy_Exception('Cannot add lines to an approved invoice');
         }
 
         $toArray = array();
-        foreach ($invoiceLines as $key => $invoiceLine)
-        {
+        foreach ($invoiceLines as $key => $invoiceLine) {
             $toArray[$key] = $invoiceLine->toArray();
         }
 

@@ -1,4 +1,4 @@
-# Billy's Billing PHP SDK [![Build Status](https://travis-ci.org/lsolesen/billysbilling.svg?branch=master)](https://travis-ci.org/lsolesen/billysbilling)
+# Billy's Billing PHP SDK [![Build Status](https://travis-ci.org/lsolesen/billysbilling.svg?branch=master)](https://travis-ci.org/lsolesen/billysbilling) [![Coverage Status](https://coveralls.io/repos/lsolesen/billysbilling/badge.svg)](https://coveralls.io/r/lsolesen/billysbilling)
 
 PHP SDK for [Billy's Billing API](https://billysbilling.com/api) version 2 only from the Danish accounting program [Billy's Billing](http://www.billysbilling.dk/).
 

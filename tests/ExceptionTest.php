@@ -8,8 +8,6 @@ use BillysBilling\Exception\Billy_Exception;
  * Class BillyExceptionTest
  *
  * @package BillysBilling
- *
- * @covers Billy_Exception
  */
 class BillyExceptionTest extends \PHPUnit_Framework_TestCase
 {

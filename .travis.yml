@@ -7,9 +7,14 @@ php:
 
 install:
   - composer self-update
-  - composer install
+  - composer install --no-interaction
+
+before_script:
+  - mkdir -p build/logs
 
 script:
-
-  - phpunit ./tests
+  - phpunit --coverage-clover build/logs/clover.xml ./tests
   - ./vendor/bin/phpcs src
+
+after_script:
+  - php vendor/bin/coveralls -v

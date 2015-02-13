@@ -40,7 +40,9 @@ class Billy_InvoiceLine extends Billy_Entity
     }
 
     /**
-     * @param $apiID
+     * Set Product ID
+     *
+     * @param string $apiID API ID
      *
      * @return $this
      */
@@ -75,7 +77,9 @@ class Billy_InvoiceLine extends Billy_Entity
     }
 
     /**
-     * @param $float
+     * Set Unit Price
+     *
+     * @param float $float Price
      *
      * @return $this
      */

@@ -9,8 +9,6 @@ use BillysBilling\Client\Billy_Request;
  * Class ClientTest
  *
  * @package BillysBilling
- *
- * @covers Billy_Request, Billy_Client
  */
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
