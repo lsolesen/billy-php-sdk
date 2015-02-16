@@ -44,17 +44,21 @@ class ProductsRepositoryTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testCreateProduct() {
+        $testProductNo = 'test:' . mt_rand(1, 9999999);
         $productStub = new Billy_Product();
         $productStub
           ->setName('Test Product Creation')
-          ->setProductNo('12345');
+          ->setProductNo($testProductNo)
+          ->setSalesTaxRuleset('62klekuNSviJYK2MEgQGFA')
+          ->set('prices', array(array('currencyId' => 'DKK', 'unitPrice' => '100')));
 
         $productsRepository = $this->testProuctsRepositoryConstruct();
         /** @var Billy_Product $createdProduct */
         $createdProduct = $productsRepository->create($productStub);
 
         $this->assertEquals('Test Product Creation', $createdProduct->getName());
-        $this->assertEquals('12345', $createdProduct->getProductNo());
+        $this->assertEquals($testProductNo, $createdProduct->getProductNo());
+        return $createdProduct;
     }
 
     public function testProductsRepositoryGetAll() {
@@ -79,7 +83,7 @@ class ProductsRepositoryTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testDeleteProduct() {
-        $product = $this->testProductsRepositoryGetSingle();
+        $product = $this->testCreateProduct();
 
         $productsRepository = $this->testProuctsRepositoryConstruct();
         $productsRepository->delete($product->getID());

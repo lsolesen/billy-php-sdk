@@ -80,7 +80,8 @@ class Billy_Response
         if (!$response->meta->success) {
             throw new Billy_Exception(
                 $response->errorMessage,
-                $response->helpUrl
+                $response->helpUrl,
+                $rawResponse
             );
         }
 

@@ -30,6 +30,10 @@ use BillysBilling\Exception\Billy_Exception;
  */
 class Billy_Invoice extends Billy_Entity
 {
+    const STATE_DRAFT = 'draft';
+    const STATE_APPROVED = 'approved';
+    const STATE_VOIDED = 'voided';
+
     const SENT_STATE_UNSENT = 'unsent';
     const SENT_STATE_PRINTED = 'printed';
     const SENT_STATE_SENT = 'sent';
@@ -45,7 +49,7 @@ class Billy_Invoice extends Billy_Entity
     {
         parent::__construct($entity);
         if ($entity === null) {
-            $this->entity->state = 'draft';
+            $this->entity->state = self::STATE_DRAFT;
         }
     }
 
@@ -88,23 +92,23 @@ class Billy_Invoice extends Billy_Entity
     /**
      * Return the time the invoice was created.
      *
-     * @return mixed
+     * @return \DateTime
      * @throws \Exception
      */
     public function getCreatedTime()
     {
-        return $this->get('createdTime');
+        return new \DateTime($this->get('createdTime'));
     }
 
     /**
      * Returns when the invoice was approved.
      *
-     * @return mixed
+     * @return \DateTime
      * @throws \Exception
      */
     public function getApprovedTime()
     {
-        return $this->get('approvedTime');
+        return new \DateTime($this->get('approvedTime'));
     }
 
     /**
@@ -156,12 +160,12 @@ class Billy_Invoice extends Billy_Entity
     /**
      * Returns the entry date
      *
-     * @return mixed
+     * @return \DateTime
      * @throws \Exception
      */
     public function getEntryDate()
     {
-        return $this->get('entryDate');
+        return new \DateTime($this->get('entryDate'));
     }
 
     /**
@@ -241,7 +245,7 @@ class Billy_Invoice extends Billy_Entity
     public function setApproved()
     {
         // Invoices can only move from draft -> approved.
-        return $this->set('state', 'approved');
+        return $this->set('state', self::STATE_APPROVED);
     }
 
     /**
@@ -251,7 +255,7 @@ class Billy_Invoice extends Billy_Entity
      */
     public function isApproved()
     {
-        return ($this->getState() == 'approved');
+        return ($this->getState() == self::STATE_APPROVED);
     }
 
     /**

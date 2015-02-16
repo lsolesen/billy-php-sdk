@@ -164,4 +164,27 @@ class Billy_InvoiceLine extends Billy_Entity
     {
         return $this->get('taxRateId');
     }
+
+    /**
+     * Returns the line item's priority.
+     *
+     * @return int
+     * @throws \Exception
+     */
+    function getPriority()
+    {
+        return $this->get('priority');
+    }
+
+    /**
+     * Sets the line item's priority.
+     *
+     * @param int $int Priority
+     *
+     * @return $this
+     */
+    function setPriority($int)
+    {
+        return $this->set('priority', $int);
+    }
 }
