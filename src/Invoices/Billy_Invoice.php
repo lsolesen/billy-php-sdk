@@ -62,26 +62,57 @@ class Billy_Invoice extends Billy_Entity
         return $this->get('organizationId');
     }
 
+    /**
+     * Returns the invoice type.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getType()
     {
         return $this->get('type');
     }
 
+    /**
+     * Set the invoice type.
+     *
+     * @param string $type Type
+     *
+     * @return $this
+     */
     public function setType($type)
     {
         return $this->set('type', $type);
     }
 
+    /**
+     * Return the time the invoice was created.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getCreatedTime()
     {
         return $this->get('createdTime');
     }
 
+    /**
+     * Returns when the invoice was approved.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getApprovedTime()
     {
         return $this->get('approvedTime');
     }
 
+    /**
+     * Returns the Invoice contact ID
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getContactID()
     {
         return $this->get('contactId');
@@ -90,7 +121,8 @@ class Billy_Invoice extends Billy_Entity
     /**
      * Sets the contact ID this invoice belongs to.
      *
-     * @param $apiID
+     * @param string $apiID Contact ID
+     *
      * @return $this
      */
     public function setContactID($apiID)
@@ -98,23 +130,45 @@ class Billy_Invoice extends Billy_Entity
         return $this->set('contactId', $apiID);
     }
 
+    /**
+     * Get the attention contact Id
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getAttContactID()
     {
         return $this->get('attContactPersonId');
     }
 
+    /**
+     * Set the attention contact contact ID
+     *
+     * @param string $apiID Api ID
+     *
+     * @return $this
+     */
     public function setAttContactID($apiID)
     {
         return $this->set('attContactPersonId', $apiID);
     }
 
+    /**
+     * Returns the entry date
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getEntryDate()
     {
         return $this->get('entryDate');
     }
 
     /**
-     * @param \DateTime $dateTime
+     * Set the invoice entry date
+     *
+     * @param \DateTime $dateTime Date
+     *
      * @return $this
      */
     public function setEntryDate(\DateTime $dateTime)
@@ -122,13 +176,21 @@ class Billy_Invoice extends Billy_Entity
         return $this->set('entryDate', $dateTime->format('Y-m-d'));
     }
 
+    /**
+     * Return the payment terms
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getPaymentTermsMode()
     {
         return $this->get('paymentTermsMode');
     }
 
     /**
-     * @param $mode
+     * Set the payment terms mode.
+     *
+     * @param string $mode Mode
      *
      * @return $this
      */
@@ -137,13 +199,22 @@ class Billy_Invoice extends Billy_Entity
         return $this->set('paymentTermsMode', $mode);
     }
 
+    /**
+     * Return the payment term days.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getPaymentTermsDays()
     {
         return $this->get('paymentTermsDays');
     }
 
     /**
-     * @param $days
+     * Set the payment term days.
+     *
+     * @param int $days Days
+     *
      * @return $this
      */
     public function setPaymentTermsDays($days)
@@ -151,74 +222,145 @@ class Billy_Invoice extends Billy_Entity
         return $this->set('paymentTermsDays', $days);
     }
 
+    /**
+     * Get the current invoice state.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getState()
     {
         return $this->get('state');
     }
 
+    /**
+     * Mark the invoice as approved.
+     *
+     * @return $this
+     */
     public function setApproved()
     {
         // Invoices can only move from draft -> approved.
         return $this->set('state', 'approved');
     }
 
+    /**
+     * Return if the invoice was approved.
+     *
+     * @return bool
+     */
     public function isApproved()
     {
         return ($this->getState() == 'approved');
     }
 
+    /**
+     * Return the sent state.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getSentState()
     {
         return $this->get('sentState');
     }
 
+    /**
+     * Set the sent state.
+     *
+     * @param string $const State
+     *
+     * @return $this
+     */
     public function setSentState($const)
     {
         return $this->set('sentState', $const);
     }
 
+    /**
+     * Return the invoice number.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getInvoiceNo()
     {
         return $this->get('invoiceNo');
     }
 
     /**
-     * @param $no
+     * Set the invoice number.
+     *
+     * @param string $no Invoice number
+     *
      * @return $this
-     * @throws \BillysBilling\Exception\Billy_Exception
      */
     public function setInvoiceNo($no)
     {
         return $this->set('invoiceNo', $no);
     }
 
+    /**
+     * Return the invoice's tax mode.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getTaxMode()
     {
         return $this->get('taxMode');
     }
 
+    /**
+     * Set the invoice tax mode.
+     *
+     * @param string $taxMode Mode
+     *
+     * @return $this
+     */
     public function setTaxMode($taxMode)
     {
         return $this->set('taxMode', $taxMode);
     }
 
+    /**
+     * Get the invoice total amount.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getAmount()
     {
         return $this->get('amount');
     }
 
+    /**
+     * Get the invoice's tax.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getTax()
     {
         return $this->get('tax');
     }
 
+    /**
+     * Get the invoice's currency ID
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getCurrencyID()
     {
         return $this->get('currencyId');
     }
 
     /**
-     * @param $apiID
+     * Set the invoice currency ID
+     *
+     * @param string $apiID Currency ID
+     *
      * @return $this
      */
     public function setCurrencyID($apiID)
@@ -226,21 +368,45 @@ class Billy_Invoice extends Billy_Entity
         return $this->set('currencyId', $apiID);
     }
 
+    /**
+     * Returns the invoice's balance.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getBalance()
     {
         return $this->get('balance');
     }
 
+    /**
+     * Return if this invoice has been paid or not.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function isPaid()
     {
         return $this->get('isPaid');
     }
 
+    /**
+     * Return the credited invoice ID
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getCreditedInvoice()
     {
         return $this->get('creditedInvoiceId');
     }
 
+    /**
+     * Return the contact message.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getContactMessage()
     {
         return $this->get('contactMessage');
@@ -249,7 +415,8 @@ class Billy_Invoice extends Billy_Entity
     /**
      * Sets message for invoice.
      *
-     * @param $message
+     * @param string $message Message
+     *
      * @return $this
      */
     public function setContactMessage($message)
@@ -257,18 +424,32 @@ class Billy_Invoice extends Billy_Entity
         return $this->set('contactMessage', $message);
     }
 
+    /**
+     * Returns line description.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getLineDescription()
     {
         return $this->get('lineDescription');
     }
 
+    /**
+     * Returns public PDF download URL.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getDownloadURL()
     {
         return $this->get('downloadUrl');
     }
 
     /**
-     * @param Billy_InvoiceLine[] $invoiceLines
+     * Sets the invoice line items.
+     *
+     * @param Billy_InvoiceLine[] $invoiceLines An array of InvoiceLine objects
      *
      * @return $this
      * @throws \BillysBilling\Exception\Billy_Exception
@@ -287,6 +468,12 @@ class Billy_Invoice extends Billy_Entity
         return $this->set('lines', $toArray);
     }
 
+    /**
+     * Returns the invoice's due date.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     public function getDueDate()
     {
         return $this->get('dueDate');

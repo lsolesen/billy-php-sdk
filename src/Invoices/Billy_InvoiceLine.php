@@ -29,11 +29,23 @@ use BillysBilling\Billy_Entity;
  */
 class Billy_InvoiceLine extends Billy_Entity
 {
+    /**
+     * Return the invoice line's invoice ID
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     function getInvoiceID()
     {
         return $this->get('invoiceId');
     }
 
+    /**
+     * Return the invoice line's product ID
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     function getProductID()
     {
         return $this->get('productId');
@@ -51,26 +63,58 @@ class Billy_InvoiceLine extends Billy_Entity
         return $this->set('productId', $apiID);
     }
 
+    /**
+     * Return the line item's description.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     function getDescription()
     {
         return $this->get('description');
     }
 
+    /**
+     * Set the line item's description.
+     *
+     * @param string $string Description
+     *
+     * @return $this
+     */
     function setDescription($string)
     {
         return $this->set('description', $string);
     }
 
+    /**
+     * Return the line item's quantity.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     function getQuantity()
     {
         return $this->get('quantity');
     }
 
+    /**
+     * Set the line item's quantity.
+     *
+     * @param int $quantity Quantity
+     *
+     * @return $this
+     */
     function setQuantity($quantity = 1)
     {
         return $this->set('quantity', $quantity);
     }
 
+    /**
+     * Return the unit price.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     function getUnitPrice()
     {
         return $this->get('unitPrice');
@@ -88,16 +132,34 @@ class Billy_InvoiceLine extends Billy_Entity
         return $this->set('unitPrice', $float);
     }
 
+    /**
+     * Return the line item's amount.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     function getAmount()
     {
         return $this->get('amount');
     }
 
+    /**
+     * Return the line item's tax.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     function getTax()
     {
         return $this->get('tax');
     }
 
+    /**
+     * Return the line item's tax rate.
+     *
+     * @return mixed
+     * @throws \Exception
+     */
     function getTaxRate()
     {
         return $this->get('taxRateId');
