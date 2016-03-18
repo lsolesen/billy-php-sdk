@@ -48,7 +48,7 @@ class Billy_InvoiceLinesRepository extends Billy_EntityRepository
      * Returns all account groups.
      *
      * @param integer $invoiceId Invoice ID
-     * 
+     *
      * @return Billy_InvoiceLine[]
      * @throws Billy_Exception
      */

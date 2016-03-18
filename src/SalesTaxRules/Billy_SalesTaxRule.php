@@ -35,7 +35,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getRuleset() 
+    public function getRuleset()
     {
         return $this->get('rulesetId');
     }
@@ -47,7 +47,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      *
      * @return $this
      */
-    public function setRuleset($apiID) 
+    public function setRuleset($apiID)
     {
         return $this->set('rulesetId', $apiID);
     }
@@ -57,7 +57,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getCountry() 
+    public function getCountry()
     {
         return $this->get('countryId');
     }
@@ -69,7 +69,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      *
      * @return $this
      */
-    public function setCountry($string) 
+    public function setCountry($string)
     {
         return $this->set('country', $string);
     }
@@ -80,7 +80,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getState() 
+    public function getState()
     {
         return $this->get('stateId');
     }
@@ -92,7 +92,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      *
      * @return $this
      */
-    public function setState($string) 
+    public function setState($string)
     {
         return $this->set('stateId', $string);
     }
@@ -103,7 +103,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getCountryGroup() 
+    public function getCountryGroup()
     {
         return $this->get('countryGroupId');
     }
@@ -115,7 +115,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      *
      * @return $this
      */
-    public function setCountryGroup($apiID) 
+    public function setCountryGroup($apiID)
     {
         return $this->set('countryGroup', $apiID);
     }
@@ -126,7 +126,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getContactType() 
+    public function getContactType()
     {
         return $this->get('contactType');
     }
@@ -138,7 +138,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      *
      * @return $this
      */
-    public function setContactType($enum) 
+    public function setContactType($enum)
     {
         return $this->set('contactType', $enum);
     }
@@ -149,7 +149,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getTaxRate() 
+    public function getTaxRate()
     {
         return $this->get('taxRateId');
     }
@@ -161,7 +161,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      *
      * @return $this
      */
-    public function setTaxRate($apiID) 
+    public function setTaxRate($apiID)
     {
         return $this->set('taxRateId', $apiID);
     }
@@ -172,7 +172,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getPriority() 
+    public function getPriority()
     {
         return $this->get('priority');
     }
@@ -184,7 +184,7 @@ class Billy_SalesTaxRule extends Billy_Entity
      *
      * @return $this
      */
-    public function setPriority($int) 
+    public function setPriority($int)
     {
         return $this->set('priority', (int) $int);
     }

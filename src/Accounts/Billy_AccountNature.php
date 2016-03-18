@@ -35,7 +35,7 @@ class Billy_AccountNature extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getReportType() 
+    public function getReportType()
     {
         return $this->get('reportType');
     }
@@ -72,7 +72,7 @@ class Billy_AccountNature extends Billy_Entity
      *
      * @return $this
      */
-    public function setName($string) 
+    public function setName($string)
     {
         return $this->set('name', $string);
     }
@@ -83,7 +83,7 @@ class Billy_AccountNature extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getNormalBalance() 
+    public function getNormalBalance()
     {
         return $this->get('normalBalance');
     }
@@ -97,7 +97,7 @@ class Billy_AccountNature extends Billy_Entity
      *
      * @todo: What are proper enum values, debit and credit only?
      */
-    public function setNormalBalance($enum) 
+    public function setNormalBalance($enum)
     {
         return $this->set('normalBalance', $enum);
     }

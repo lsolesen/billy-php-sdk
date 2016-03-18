@@ -64,7 +64,7 @@ class Billy_AccountGroup extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getNature() 
+    public function getNature()
     {
         return $this->get('natureId');
     }
@@ -75,7 +75,7 @@ class Billy_AccountGroup extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getName() 
+    public function getName()
     {
         return $this->get('name');
     }
@@ -87,7 +87,7 @@ class Billy_AccountGroup extends Billy_Entity
      *
      * @return $this
      */
-    public function setName($string) 
+    public function setName($string)
     {
         return $this->set('name', $string);
     }
@@ -98,7 +98,7 @@ class Billy_AccountGroup extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getDescription() 
+    public function getDescription()
     {
         return $this->get('description');
     }
@@ -110,9 +110,8 @@ class Billy_AccountGroup extends Billy_Entity
      *
      * @return $this
      */
-    public function setDescription($string) 
+    public function setDescription($string)
     {
         return $this->set('description', $string);
     }
-
 }

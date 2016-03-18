@@ -37,7 +37,7 @@ class Billy_SalesTaxRuleset extends Billy_Entity
      * @return string
      * @throws \Exception
      */
-    public function getOrganization() 
+    public function getOrganization()
     {
         return $this->get('organizationId');
     }
@@ -48,7 +48,7 @@ class Billy_SalesTaxRuleset extends Billy_Entity
      * @return string
      * @throws \Exception
      */
-    public function getName() 
+    public function getName()
     {
         return $this->get('name');
     }
@@ -60,7 +60,7 @@ class Billy_SalesTaxRuleset extends Billy_Entity
      *
      * @return $this
      */
-    public function setName($string) 
+    public function setName($string)
     {
         return $this->set('name', $string);
     }
@@ -71,7 +71,7 @@ class Billy_SalesTaxRuleset extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getAbbreviation() 
+    public function getAbbreviation()
     {
         return $this->get('abbreviation');
     }

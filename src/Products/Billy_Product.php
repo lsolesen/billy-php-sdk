@@ -128,7 +128,7 @@ class Billy_Product extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    public function getProductNo() 
+    public function getProductNo()
     {
         return $this->get('productNo');
     }
@@ -197,7 +197,7 @@ class Billy_Product extends Billy_Entity
      * @return bool
      * @throws \Exception
      */
-    public function isArchived() 
+    public function isArchived()
     {
         return (bool) $this->get('isArchived');
     }
