@@ -35,7 +35,7 @@ class Billy_FakeRequest
      *
      * @param string $accessToken Access token from Billy
      */
-    function __construct($accessToken)
+    public function __construct($accessToken)
     {
         $this->accessToken = $accessToken;
     }

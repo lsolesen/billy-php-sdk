@@ -31,13 +31,13 @@ class Billy_Exception extends \Exception
      * Service help URL in reference to error.
      * @var string
      */
-    var $helpUrl;
+    protected $helpUrl;
 
     /**
      * JSON Object involved in the error.
      * @var array
      */
-    var $json;
+    protected $json;
 
     /**
      * Construct the exception.

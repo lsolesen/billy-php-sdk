@@ -51,7 +51,7 @@ class Billy_Client
      *
      * @return Billy_Response
      */
-    function get($url)
+    public function get($url)
     {
         return $this->request->call('GET', $url);
     }
@@ -64,7 +64,7 @@ class Billy_Client
      *
      * @return Billy_Response
      */
-    function post($url, $body)
+    public function post($url, $body)
     {
         return $this->request->call('POST', $url, $body);
     }
@@ -77,7 +77,7 @@ class Billy_Client
      *
      * @return Billy_Response
      */
-    function put($url, $body)
+    public function put($url, $body)
     {
         return $this->request->call('PUT', $url, $body);
     }
@@ -89,7 +89,7 @@ class Billy_Client
      *
      * @return Billy_Response
      */
-    function delete($url)
+    public function delete($url)
     {
         return $this->request->call('DELETE', $url);
     }

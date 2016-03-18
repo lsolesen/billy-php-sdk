@@ -35,7 +35,7 @@ class Billy_InvoiceLine extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    function getInvoiceID()
+    public function getInvoiceID()
     {
         return $this->get('invoiceId');
     }
@@ -46,7 +46,7 @@ class Billy_InvoiceLine extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    function getProductID()
+    public function getProductID()
     {
         return $this->get('productId');
     }
@@ -58,7 +58,7 @@ class Billy_InvoiceLine extends Billy_Entity
      *
      * @return $this
      */
-    function setProductID($apiID)
+    public function setProductID($apiID)
     {
         return $this->set('productId', $apiID);
     }
@@ -69,7 +69,7 @@ class Billy_InvoiceLine extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    function getDescription()
+    public function getDescription()
     {
         return $this->get('description');
     }
@@ -81,7 +81,7 @@ class Billy_InvoiceLine extends Billy_Entity
      *
      * @return $this
      */
-    function setDescription($string)
+    public function setDescription($string)
     {
         return $this->set('description', $string);
     }
@@ -92,7 +92,7 @@ class Billy_InvoiceLine extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    function getQuantity()
+    public function getQuantity()
     {
         return $this->get('quantity');
     }
@@ -104,7 +104,7 @@ class Billy_InvoiceLine extends Billy_Entity
      *
      * @return $this
      */
-    function setQuantity($quantity = 1)
+    public function setQuantity($quantity = 1)
     {
         return $this->set('quantity', $quantity);
     }
@@ -115,7 +115,7 @@ class Billy_InvoiceLine extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    function getUnitPrice()
+    public function getUnitPrice()
     {
         return $this->get('unitPrice');
     }
@@ -127,7 +127,7 @@ class Billy_InvoiceLine extends Billy_Entity
      *
      * @return $this
      */
-    function setUnitPrice($float)
+    public function setUnitPrice($float)
     {
         return $this->set('unitPrice', $float);
     }
@@ -138,7 +138,7 @@ class Billy_InvoiceLine extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    function getAmount()
+    public function getAmount()
     {
         return $this->get('amount');
     }
@@ -149,7 +149,7 @@ class Billy_InvoiceLine extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    function getTax()
+    public function getTax()
     {
         return $this->get('tax');
     }
@@ -160,7 +160,7 @@ class Billy_InvoiceLine extends Billy_Entity
      * @return mixed
      * @throws \Exception
      */
-    function getTaxRate()
+    public function getTaxRate()
     {
         return $this->get('taxRateId');
     }
@@ -171,7 +171,7 @@ class Billy_InvoiceLine extends Billy_Entity
      * @return int
      * @throws \Exception
      */
-    function getPriority()
+    public function getPriority()
     {
         return $this->get('priority');
     }
@@ -183,7 +183,7 @@ class Billy_InvoiceLine extends Billy_Entity
      *
      * @return $this
      */
-    function setPriority($int)
+    public function setPriority($int)
     {
         return $this->set('priority', $int);
     }
