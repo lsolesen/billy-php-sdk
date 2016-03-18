@@ -3,6 +3,7 @@
     "type": "library",
     "description": "PHP-SDK to communicate with BillysBilling",
     "homepage": "http://github.com/lsolesen/billysbilling",
+    "license": "MIT",
     "authors": [
         {
             "name": "Lars Olesen",
