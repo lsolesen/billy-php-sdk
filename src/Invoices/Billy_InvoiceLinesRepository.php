@@ -8,7 +8,7 @@
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
- * @license   http://opensource.org/licenses/bsd-license.php New BSD License
+ * @license   MIT Open Source License https://opensource.org/licenses/MIT
  * @version   GIT: <git_id>
  * @link      http://github.com/lsolesen/billysbilling
  */
@@ -26,8 +26,6 @@ use BillysBilling\Exception\Billy_Exception;
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
- * @license   http://opensource.org/licenses/bsd-license.php New BSD License
- * @link      http://github.com/lsolesen/billysbilling
  */
 class Billy_InvoiceLinesRepository extends Billy_EntityRepository
 {
