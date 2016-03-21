@@ -15,24 +15,24 @@
 
 namespace BillysBilling\Invoices;
 
-use BillysBilling\Billy_EntityRepository;
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\EntityRepository;
+use BillysBilling\Client\Request;
+use BillysBilling\Exception\Exception;
 
 /**
- * Class Billy_ProductsRepository
+ * Class InvoiceLinesRepository
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_InvoiceLinesRepository extends Billy_EntityRepository
+class InvoiceLinesRepository extends EntityRepository
 {
     /**
      * Defines API information for endpoint.
      *
-     * @param Billy_Request $request Request object
+     * @param Request $request Request object
      */
     public function __construct($request)
     {
@@ -47,8 +47,8 @@ class Billy_InvoiceLinesRepository extends Billy_EntityRepository
      *
      * @param integer $invoiceId Invoice ID
      *
-     * @return Billy_InvoiceLine[]
-     * @throws Billy_Exception
+     * @return InvoiceLine[]
+     * @throws BillyException
      */
     public function getAll($invoiceId)
     {
@@ -56,7 +56,7 @@ class Billy_InvoiceLinesRepository extends Billy_EntityRepository
         $response = parent::getAll();
         $invoiceLines = array();
         foreach ($response as $key => $invoiceLine) {
-            $invoiceLines[$invoiceLine->id] = new Billy_InvoiceLine($invoiceLine);
+            $invoiceLines[$invoiceLine->id] = new InvoiceLine($invoiceLine);
         }
         return $invoiceLines;
     }
@@ -66,24 +66,24 @@ class Billy_InvoiceLinesRepository extends Billy_EntityRepository
      *
      * @param string $id API ID
      *
-     * @return Billy_InvoiceLine
+     * @return InvoiceLine
      */
     public function getSingle($id)
     {
         $response = parent::getSingle($id);
-        return new Billy_InvoiceLine($response);
+        return new InvoiceLine($response);
     }
 
     /**
      * Create an item through an object endpoint.
      *
-     * @param Billy_InvoiceLine $object API Entity object
+     * @param InvoiceLine $object API Entity object
      *
      * @return mixed
      */
     public function create($object)
     {
         $response = parent::create($object);
-        return new Billy_InvoiceLine($response->{$this->recordKeyPlural}[0]);
+        return new InvoiceLine($response->{$this->recordKeyPlural}[0]);
     }
 }

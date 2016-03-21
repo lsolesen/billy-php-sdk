@@ -15,24 +15,24 @@
 
 namespace BillysBilling\SalesTaxRules;
 
-use BillysBilling\Billy_EntityRepository;
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\EntityRepository;
+use BillysBilling\Client\Request;
+use BillysBilling\Exception\Exception;
 
 /**
- * Class Billy_AccountNaturesRepository
+ * Class SalesTaxRulesetsRepository
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_SalesTaxRulesetsRepository extends Billy_EntityRepository
+class SalesTaxRulesetsRepository extends EntityRepository
 {
     /**
      * Defines API information for endpoint.
      *
-     * @param Billy_Request $request Request object
+     * @param Request $request Request object
      */
     public function __construct($request)
     {
@@ -45,15 +45,15 @@ class Billy_SalesTaxRulesetsRepository extends Billy_EntityRepository
     /**
      * Returns all account Natures.
      *
-     * @return Billy_SalesTaxRuleset[]
-     * @throws Billy_Exception
+     * @return SalesTaxRuleset[]
+     * @throws BillyException
      */
     public function getAll()
     {
         $response = parent::getAll();
         $natures = array();
         foreach ($response as $key => $ruleset) {
-            $natures[$ruleset->id] = new Billy_SalesTaxRuleset($ruleset);
+            $natures[$ruleset->id] = new SalesTaxRuleset($ruleset);
         }
         return $natures;
     }
@@ -63,24 +63,24 @@ class Billy_SalesTaxRulesetsRepository extends Billy_EntityRepository
      *
      * @param string $id API ID
      *
-     * @return Billy_SalesTaxRuleset
+     * @return SalesTaxRuleset
      */
     public function getSingle($id)
     {
         $response = parent::getSingle($id);
-        return new Billy_SalesTaxRuleset($response);
+        return new SalesTaxRuleset($response);
     }
 
     /**
      * Create an item through an object endpoint.
      *
-     * @param Billy_SalesTaxRuleset $object API Entity object
+     * @param SalesTaxRuleset $object API Entity object
      *
-     * @return mixed
+     * @return SalesTaxRuleset
      */
     public function create($object)
     {
         $response = parent::create($object);
-        return new Billy_SalesTaxRuleset($response->{$this->recordKeyPlural}[0]);
+        return new SalesTaxRuleset($response->{$this->recordKeyPlural}[0]);
     }
 }

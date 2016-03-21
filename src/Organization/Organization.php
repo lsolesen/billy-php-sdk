@@ -15,13 +15,13 @@
 
 namespace BillysBilling\Organization;
 
-use BillysBilling\Client\Billy_Client;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\Client\Client;
+use BillysBilling\Exception\Exception;
 
 /**
- * Class Billy_Organization
+ * Class Organization
  *
- * @todo: Convert to Billy_Entity
+ * @todo: Convert to Entity
  * @link: https://billysbilling.com/api#v2organizations
  *
  * @category  BillysBilling
@@ -29,7 +29,7 @@ use BillysBilling\Exception\Billy_Exception;
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_Organization
+class Organization
 {
 
     /**
@@ -42,9 +42,9 @@ class Billy_Organization
     /**
      * Initiates organization object
      *
-     * @param Billy_Client $client BillysBilling API Client
+     * @param Client $client BillysBilling API Client
      *
-     * @throws Billy_Exception
+     * @throws Exception
      */
     public function __construct($client)
     {
@@ -52,7 +52,7 @@ class Billy_Organization
         if ($response->isSuccess()) {
             $this->organization = $response->getBody()->organization;
         } else {
-            throw new Billy_Exception(
+            throw new BillyException(
                 'Unable to retrieve organization information.'
             );
         }

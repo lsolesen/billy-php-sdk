@@ -15,18 +15,18 @@
 
 namespace BillysBilling\Invoices;
 
-use BillysBilling\Billy_Entity;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\Entity;
+use BillysBilling\Exception\BillyException;
 
 /**
- * Class Billy_Invoice
+ * Class Invoice
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_Invoice extends Billy_Entity
+class Invoice extends Entity
 {
     const STATE_DRAFT = 'draft';
     const STATE_APPROVED = 'approved';
@@ -451,15 +451,15 @@ class Billy_Invoice extends Billy_Entity
     /**
      * Sets the invoice line items.
      *
-     * @param Billy_InvoiceLine[] $invoiceLines An array of InvoiceLine objects
+     * @param InvoiceLine[] $invoiceLines An array of InvoiceLine objects
      *
      * @return $this
-     * @throws \BillysBilling\Exception\Billy_Exception
+     * @throws \BillysBilling\Exception\BillyException
      */
     public function setLines($invoiceLines)
     {
         if ($this->isApproved()) {
-            throw new Billy_Exception('Cannot add lines to an approved invoice');
+            throw new BillyException('Cannot add lines to an approved invoice');
         }
 
         $toArray = array();

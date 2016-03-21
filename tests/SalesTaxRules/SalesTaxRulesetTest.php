@@ -2,38 +2,42 @@
 
 namespace BillysBilling\Tests\SalesTaxRules;
 
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\SalesTaxRules\Billy_SalesTaxRuleset;
-use BillysBilling\SalesTaxRules\Billy_SalesTaxRulesetsRepository;
+use BillysBilling\Client\Request;
+use BillysBilling\SalesTaxRules\SalesTaxRuleset;
+use BillysBilling\SalesTaxRules\SalesTaxRulesetsRepository;
 
-class SalesTaxRulesetTest extends \PHPUnit_Framework_TestCase {
+class SalesTaxRulesetTest extends \PHPUnit_Framework_TestCase
+{
     /**
-     * @var Billy_Request.
+     * @var Request.
      */
     protected $request;
 
     protected $api_key = '2603a3bf205f88d1fe6df7fb26c4ce91eea74fe4';
 
     /**
-     * @var Billy_SalesTaxRuleset[]
+     * @var SalesTaxRuleset[]
      */
     protected $salesTaxRuleset;
     /**
-     * @var Billy_SalesTaxRulesetsRepository
+     * @var SalesTaxRulesetsRepository
      */
     protected $salesTaxRulesetRepository;
 
-    public function __construct() {
-        $this->request = new Billy_Request($this->api_key);
+    public function __construct()
+    {
+        $this->request = new Request($this->api_key);
     }
 
-    public function testSalesTaxRulesetsRepositoryConstruct() {
-        $repository = new Billy_SalesTaxRulesetsRepository($this->request);
+    public function testSalesTaxRulesetsRepositoryConstruct()
+    {
+        $repository = new SalesTaxRulesetsRepository($this->request);
         $this->assertNotNull($repository, 'Sales Tax Ruleset Repository created');
         return $this->salesTaxRulesetRepository = $repository;
     }
 
-    public function testSalesTaxRulesetGetAll() {
+    public function testSalesTaxRulesetGetAll()
+    {
 
         $repository = $this->testSalesTaxRulesetsRepositoryConstruct();
         $results = $repository->getAll();
@@ -43,9 +47,10 @@ class SalesTaxRulesetTest extends \PHPUnit_Framework_TestCase {
 
     }
 
-    public function testSalesTaxRulesGetSingle() {
+    public function testSalesTaxRulesGetSingle()
+    {
         $salesTaxRulesets = $this->testSalesTaxRulesetGetAll();
-        /** @var Billy_SalesTaxRuleset $firstRuleset */
+        /** @var SalesTaxRuleset $firstRuleset */
         $firstRuleset = reset($salesTaxRulesets);
 
         $repository = $this->testSalesTaxRulesetsRepositoryConstruct();

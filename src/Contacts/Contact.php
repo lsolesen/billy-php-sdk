@@ -15,17 +15,17 @@
 
 namespace BillysBilling\Contacts;
 
-use BillysBilling\Billy_Entity;
+use BillysBilling\Entity;
 
 /**
- * Class Billy_Contact
+ * Class Contact
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_Contact extends Billy_Entity
+class Contact extends Entity
 {
 
     /**

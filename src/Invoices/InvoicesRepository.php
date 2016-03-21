@@ -13,49 +13,49 @@
  * @link      http://github.com/lsolesen/billysbilling
  */
 
-namespace BillysBilling\Accounts;
+namespace BillysBilling\Invoices;
 
-use BillysBilling\Billy_EntityRepository;
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\EntityRepository;
+use BillysBilling\Client\Request;
+use BillysBilling\Exception\Exception;
 
 /**
- * Class Billy_AccountGroupsRepository
+ * Class InvoicesRepository
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_AccountGroupsRepository extends Billy_EntityRepository
+class InvoicesRepository extends EntityRepository
 {
     /**
      * Defines API information for endpoint.
      *
-     * @param Billy_Request $request Request object
+     * @param Request $request Request object
      */
     public function __construct($request)
     {
-        $this->url = '/accountGroups';
-        $this->recordKey = 'accountGroup';
-        $this->recordKeyPlural = 'accountGroups';
+        $this->url = '/invoices';
+        $this->recordKey = 'invoice';
+        $this->recordKeyPlural = 'invoices';
         $this->request = $request;
     }
 
     /**
      * Returns all account groups.
      *
-     * @return Billy_AccountGroup[]
-     * @throws Billy_Exception
+     * @return Invoice[]
+     * @throws BillyException
      */
     public function getAll()
     {
         $response = parent::getAll();
-        $groups = array();
-        foreach ($response as $key => $group) {
-            $groups[$group->id] = new Billy_AccountGroup($group);
+        $invoices = array();
+        foreach ($response as $key => $invoice) {
+            $invoices[$invoice->id] = new Invoice($invoice);
         }
-        return $groups;
+        return $invoices;
     }
 
     /**
@@ -63,25 +63,24 @@ class Billy_AccountGroupsRepository extends Billy_EntityRepository
      *
      * @param string $id API ID
      *
-     * @return Billy_AccountGroup
+     * @return Invoice
      */
     public function getSingle($id)
     {
         $response = parent::getSingle($id);
-        return new Billy_AccountGroup($response);
+        return new Invoice($response);
     }
 
     /**
      * Create an item through an object endpoint.
      *
-     * @param Billy_AccountGroup $object API Entity object
+     * @param Invoice $object API Entity object
      *
-     * @return mixed
+     * @return Invoice
      */
     public function create($object)
     {
         $response = parent::create($object);
-        // @todo: This returns a reportLayouts object as well...what to do?
-        return new Billy_AccountGroup($response->{$this->recordKeyPlural}[0]);
+        return new Invoice($response->{$this->recordKeyPlural}[0]);
     }
 }

@@ -15,17 +15,17 @@
 
 namespace BillysBilling\Products;
 
-use BillysBilling\Billy_Entity;
+use BillysBilling\Entity;
 
 /**
- * Class Billy_Product
+ * Class Product
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_Product extends Billy_Entity
+class Product extends Entity
 {
     /**
      * Properties required for creation.

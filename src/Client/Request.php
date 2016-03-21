@@ -23,7 +23,7 @@ namespace BillysBilling\Client;
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_Request
+class Request
 {
 
     protected $accessToken;
@@ -63,6 +63,6 @@ class Billy_Request
         $res = curl_exec($c);
         $info = curl_getinfo($c);
 
-        return new Billy_Response($info, $res);
+        return new Response($info, $res);
     }
 }

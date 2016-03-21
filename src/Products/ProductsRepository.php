@@ -13,27 +13,26 @@
  * @link      http://github.com/lsolesen/billysbilling
  */
 
-namespace BillysBilling\BankPayments;
+namespace BillysBilling\Products;
 
-use BillysBilling\Billy_EntityRepository;
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\EntityRepository;
+use BillysBilling\Client\Request;
+use BillysBilling\Exception\Exception;
 
 /**
- * Class Billy_BankPaymentRepository
+ * Class ProductsRepository
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_BankPaymentRepository extends Billy_EntityRepository
+class ProductsRepository extends EntityRepository
 {
-
     /**
      * Defines API information for endpoint.
      *
-     * @param Billy_Request $request Request object
+     * @param Request $request Request object
      */
     public function __construct($request)
     {
@@ -46,17 +45,17 @@ class Billy_BankPaymentRepository extends Billy_EntityRepository
     /**
      * Returns all account groups.
      *
-     * @return Billy_BankPayment[]
-     * @throws Billy_Exception
+     * @return Product[]
+     * @throws BillyException
      */
     public function getAll()
     {
         $response = parent::getAll();
-        $payments = array();
-        foreach ($response as $key => $payment) {
-            $payments[$payment->id] = new Billy_BankPayment($payment);
+        $products = array();
+        foreach ($response as $key => $product) {
+            $products[$product->id] = new Product($product);
         }
-        return $payments;
+        return $products;
     }
 
     /**
@@ -64,24 +63,24 @@ class Billy_BankPaymentRepository extends Billy_EntityRepository
      *
      * @param string $id API ID
      *
-     * @return Billy_BankPayment
+     * @return Product
      */
     public function getSingle($id)
     {
         $response = parent::getSingle($id);
-        return new Billy_BankPayment($response);
+        return new Product($response);
     }
 
     /**
      * Create an item through an object endpoint.
      *
-     * @param Billy_BankPayment $object API Entity object
+     * @param Product $object API Entity object
      *
      * @return mixed
      */
     public function create($object)
     {
         $response = parent::create($object);
-        return new Billy_BankPayment($response->{$this->recordKeyPlural}[0]);
+        return new Product($response->{$this->recordKeyPlural}[0]);
     }
 }

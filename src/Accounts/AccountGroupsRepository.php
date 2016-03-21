@@ -13,75 +13,75 @@
  * @link      http://github.com/lsolesen/billysbilling
  */
 
-namespace BillysBilling\Contacts;
+namespace BillysBilling\Accounts;
 
-use BillysBilling\Billy_EntityRepository;
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\EntityRepository;
+use BillysBilling\Client\Request;
+use BillysBilling\Exception\Exception;
 
 /**
- * Class Billy_ContactRepository
+ * Class AccountGroupsRepository
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_ContactRepository extends Billy_EntityRepository
+class AccountGroupsRepository extends EntityRepository
 {
-
     /**
      * Defines API information for endpoint.
      *
-     * @param Billy_Request $request Request object
+     * @param Request $request Request object
      */
     public function __construct($request)
     {
-        $this->url = '/contacts';
-        $this->recordKey = 'contact';
-        $this->recordKeyPlural = 'contacts';
+        $this->url = '/accountGroups';
+        $this->recordKey = 'accountGroup';
+        $this->recordKeyPlural = 'accountGroups';
         $this->request = $request;
     }
 
     /**
-     * Lists contacts.
+     * Returns all account groups.
      *
-     * @return Billy_Contact[]
-     * @throws Billy_Exception
+     * @return AccountGroup[]
+     * @throws Exception
      */
     public function getAll()
     {
         $response = parent::getAll();
-        $contacts = array();
-        foreach ($response as $key => $contact) {
-            $contacts[$contact->id] = new Billy_Contact($contact);
+        $groups = array();
+        foreach ($response as $key => $group) {
+            $groups[$group->id] = new AccountGroup($group);
         }
-        return $contacts;
+        return $groups;
     }
 
     /**
-     * Returns a contact
+     * Returns an account group
      *
      * @param string $id API ID
      *
-     * @return Billy_Contact
+     * @return AccountGroup
      */
     public function getSingle($id)
     {
         $response = parent::getSingle($id);
-        return new Billy_Contact($response);
+        return new AccountGroup($response);
     }
 
     /**
      * Create an item through an object endpoint.
      *
-     * @param Billy_Contact $object API Entity object
+     * @param AccountGroup $object API Entity object
      *
-     * @return Billy_Contact
+     * @return mixed
      */
     public function create($object)
     {
         $response = parent::create($object);
-        return new Billy_Contact($response->{$this->recordKeyPlural}[0]);
+        // @todo: This returns a reportLayouts object as well...what to do?
+        return new AccountGroup($response->{$this->recordKeyPlural}[0]);
     }
 }

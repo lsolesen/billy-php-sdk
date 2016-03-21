@@ -16,14 +16,14 @@
 namespace BillysBilling;
 
 /**
- * Class Billy_Entity
+ * Class Entity
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_Entity
+class Entity
 {
 
     /**

@@ -2,42 +2,46 @@
 
 namespace BillysBilling\Tests\Accounts;
 
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\Accounts\Billy_Account;
-use BillysBilling\Accounts\Billy_AccountGroupsRepository;
-use BillysBilling\Accounts\Billy_AccountsRepository;
+use BillysBilling\Client\Request;
+use BillysBilling\Accounts\Account;
+use BillysBilling\Accounts\AccountGroupsRepository;
+use BillysBilling\Accounts\AccountsRepository;
 
-class AccountsGroupTest extends \PHPUnit_Framework_TestCase {
+class AccountsGroupTest extends \PHPUnit_Framework_TestCase
+{
     /**
-     * @var Billy_Request.
+     * @var Request.
      */
     protected $request;
 
     protected $api_key = '2603a3bf205f88d1fe6df7fb26c4ce91eea74fe4';
 
     /**
-     * @var Billy_Account[]
+     * @var Account[]
      */
     protected $accountGroups;
     /**
-     * @var Billy_AccountGroupsRepository
+     * @var AccountGroupsRepository
      */
     protected $accountsGroupRepository;
 
-    public function __construct() {
-        $this->request = new Billy_Request($this->api_key);
+    public function __construct()
+    {
+        $this->request = new Request($this->api_key);
     }
 
-    public function testAccountGroupRepositoryConstruct() {
+    public function testAccountGroupRepositoryConstruct()
+    {
         // Ensure that the AccountGroupsRepository can be initiated.
-        $repository = new Billy_AccountGroupsRepository($this->request);
+        $repository = new AccountGroupsRepository($this->request);
 
         $this->assertNotNull($repository, 'Able to initiate account group repository');
 
         return $this->accountsGroupRepository = $repository;
     }
 
-    public function testAccountGroupRepositoryGetAll() {
+    public function testAccountGroupRepositoryGetAll()
+    {
 
         $repository = $this->testAccountGroupRepositoryConstruct();
         $results = $repository->getAll();
@@ -46,8 +50,9 @@ class AccountsGroupTest extends \PHPUnit_Framework_TestCase {
         return $this->accountGroups = $results;
     }
 
-    public function testAccountGroupRepositoryGetSingle() {
-        /** @var Billy_Account $firstContact */
+    public function testAccountGroupRepositoryGetSingle()
+    {
+        /** @var Account $firstContact */
         $accountGroups = $this->testAccountGroupRepositoryGetAll();
         $firstAccountGroup = reset($accountGroups);
 

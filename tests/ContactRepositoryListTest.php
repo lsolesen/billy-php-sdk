@@ -2,33 +2,35 @@
 
 namespace BillysBilling\Tests;
 
-use BillysBilling\Client\Billy_Client;
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\Contacts\Billy_Contact;
-use BillysBilling\Contacts\Billy_ContactRepository;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\Client\Client;
+use BillysBilling\Client\Request;
+use BillysBilling\Contacts\Contact;
+use BillysBilling\Contacts\ContactRepository;
+use BillysBilling\Exception\BillyException;
 
 class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase
 {
     protected $api_key = '2603a3bf205f88d1fe6df7fb26c4ce91eea74fe4';
     protected $testContactID;
     /**
-     * @var Billy_Contact;
+     * @var Contact;
      */
     protected $testContact;
 
     /**
-     * @var Billy_ContactRepository
+     * @var ContactRepository
      */
     protected $contactRepository;
 
-    public function __construct() {
-        $this->request = new Billy_Request($this->api_key);
+    public function __construct()
+    {
+        $this->request = new Request($this->api_key);
     }
 
-    public function testContactRepositoryConstruct() {
+    public function testContactRepositoryConstruct()
+    {
         // Ensure that the ContactRepository can be initiated.
-        $repository = new Billy_ContactRepository($this->request);
+        $repository = new ContactRepository($this->request);
 
         $this->assertNotNull(
             $repository,
@@ -49,7 +51,7 @@ class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase
     public function testGetContact()
     {
         $contacts = $this->testGetContacts();
-        /** @var Billy_Contact $firstContact */
+        /** @var Contact $firstContact */
         $firstContact = reset($contacts);
 
         $repository = $this->testContactRepositoryConstruct();
@@ -69,9 +71,9 @@ class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase
         $this->testContact = $contact;
     }
 
-    public function createContact()
+    protected function createContact()
     {
-        $new_contact = new Billy_Contact();
+        $new_contact = new Contact();
         $new_contact->setName('Billy McBillster');
         $new_contact->setCountryID('DK');
         $new_contact->set('phone', '555-555-5555');
@@ -88,9 +90,9 @@ class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase
         return $new_contact;
     }
 
-    public function updateContact($contact)
+    protected function updateContact($contact)
     {
-        if ($contact instanceof Billy_Contact) {
+        if ($contact instanceof Contact) {
 
             $contact->set('fax', '555-444-3333');
 
@@ -104,11 +106,11 @@ class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function deleteContact($contact)
+    protected function deleteContact($contact)
     {
         $repository = $this->testContactRepositoryConstruct();
 
-        if ($contact instanceof Billy_Contact) {
+        if ($contact instanceof Contact) {
             $repository->delete($contact->getID());
         } else {
             $this->fail('Test contact not defined');
@@ -117,7 +119,7 @@ class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase
         try {
             $test_deleted = $repository->getSingle($contact->getID());
             $this->fail('Failed to delete contact');
-        } catch (Billy_Exception $e) {
+        } catch (BillyException $e) {
             $this->assertEquals(
                 'No `contact` record with id `' . $contact->getID() . '` was found.',
                 $e->getMessage()

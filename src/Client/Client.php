@@ -16,26 +16,26 @@
 namespace BillysBilling\Client;
 
 /**
- * BillysBilling: client.
+ * Class Client
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_Client
+class Client
 {
     /**
      * Request object.
      *
-     * @var Billy_Request
+     * @var Request
      */
     protected $request;
 
     /**
      * Construct a Billy Client with an API key and optionally an API version.
      *
-     * @param Billy_Request $request Request object
+     * @param Request $request Request object
      */
     public function __construct($request)
     {
@@ -47,7 +47,7 @@ class Billy_Client
      *
      * @param string $url Url on the REST service
      *
-     * @return Billy_Response
+     * @return Response
      */
     public function get($url)
     {
@@ -60,7 +60,7 @@ class Billy_Client
      * @param string $url  Url on the REST service
      * @param array  $body Parameters for the request
      *
-     * @return Billy_Response
+     * @return Response
      */
     public function post($url, $body)
     {
@@ -73,7 +73,7 @@ class Billy_Client
      * @param string $url  Url on the REST service
      * @param array  $body Parameters for the request
      *
-     * @return Billy_Response
+     * @return Response
      */
     public function put($url, $body)
     {
@@ -85,7 +85,7 @@ class Billy_Client
      *
      * @param string $url Url on the REST service
      *
-     * @return Billy_Response
+     * @return Response
      */
     public function delete($url)
     {
