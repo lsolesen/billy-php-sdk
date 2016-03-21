@@ -2,8 +2,8 @@
 
 namespace BillysBilling\Tests;
 
-use BillysBilling\Client\Billy_Client;
-use BillysBilling\Client\Billy_Request;
+use BillysBilling\Client\Client;
+use BillysBilling\Client\Request;
 
 /**
  * Class ClientTest
@@ -17,20 +17,20 @@ class ClientTest extends \PHPUnit_Framework_TestCase
     protected $contactId;
     protected $organizationId;
 
-    function getClient($key)
+    public function getClient($key)
     {
-        $request = new Billy_Request($key);
-        return new Billy_Client($request);
+        $request = new Request($key);
+        return new Client($request);
     }
 
-    function testConstructor()
+    public function testConstructor()
     {
         $invalid_api_key = 'invalid';
         $client = $this->getClient($invalid_api_key);
         $this->assertTrue(is_object($client));
     }
 
-    function getOrganisation()
+    public function getOrganisation()
     {
         $client = $this->getClient($this->api_key);
         $res = $client->get("/organization");
@@ -42,7 +42,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         return $this->organizationId = $res->getBody()->organization->id;
     }
 
-    function addContact($organisation_id)
+    public function addContact($organisation_id)
     {
         $client = $this->getClient($this->api_key);
         $res = $client->post("/contacts", array(
@@ -61,7 +61,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         return $this->contactId = $res->getBody()->contacts[0]->id;
     }
 
-    function getContact($contact_id)
+    public function getContact($contact_id)
     {
         $client = $this->getClient($this->api_key);
         //Get the contact again
@@ -74,14 +74,16 @@ class ClientTest extends \PHPUnit_Framework_TestCase
         return $res->getBody();
     }
 
-    function testGet()
+    public function testGet()
     {
         $organisation_id = $this->getOrganisation();
         $contact_id = $this->addContact($organisation_id);
         $result = $this->getContact($contact_id);
 
         $this->assertEquals($result->contact->name, 'Arnold');
-        $this->assertEquals($result->contact->organizationId,
-          'ROcPwhmSQ9STgSrOQw1OoQ');
+        $this->assertEquals(
+            $result->contact->organizationId,
+            'ROcPwhmSQ9STgSrOQw1OoQ'
+        );
     }
 }

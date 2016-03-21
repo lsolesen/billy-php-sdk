@@ -15,12 +15,12 @@
 
 namespace BillysBilling\SalesTaxRules;
 
-use BillysBilling\Billy_EntityRepository;
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\EntityRepository;
+use BillysBilling\Client\Request;
+use BillysBilling\Exception\Exception;
 
 /**
- * Class Billy_SalesTaxRulesRepository
+ * Class SalesTaxRulesRepository
  *
  * @todo: Rules are to be queries by a ruleset ID
  *         "You need to filter the list by `rulesetId`, i.e. by using
@@ -31,12 +31,12 @@ use BillysBilling\Exception\Billy_Exception;
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_SalesTaxRulesRepository extends Billy_EntityRepository
+class SalesTaxRulesRepository extends EntityRepository
 {
     /**
      * Defines API information for endpoint.
      *
-     * @param Billy_Request $request Request object
+     * @param Request $request Request object
      */
     public function __construct($request)
     {
@@ -51,15 +51,15 @@ class Billy_SalesTaxRulesRepository extends Billy_EntityRepository
      *
      * @todo: should should require a ?rulesetId=API_ID parameter.
      *
-     * @return Billy_SalesTaxRule[]
-     * @throws Billy_Exception
+     * @return SalesTaxRule[]
+     * @throws BillyException
      */
     public function getAll()
     {
         $response = parent::getAll();
         $taxRules = array();
         foreach ($response as $key => $taxRule) {
-            $taxRules[$taxRule->id] = new Billy_SalesTaxRule($taxRule);
+            $taxRules[$taxRule->id] = new SalesTaxRule($taxRule);
         }
         return $taxRules;
     }
@@ -69,24 +69,24 @@ class Billy_SalesTaxRulesRepository extends Billy_EntityRepository
      *
      * @param string $id API ID
      *
-     * @return Billy_SalesTaxRule
+     * @return SalesTaxRule
      */
     public function getSingle($id)
     {
         $response = parent::getSingle($id);
-        return new Billy_SalesTaxRule($response);
+        return new SalesTaxRule($response);
     }
 
     /**
      * Create an item through an object endpoint.
      *
-     * @param Billy_SalesTaxRule $object API Entity object
+     * @param SalesTaxRule $object API Entity object
      *
-     * @return mixed
+     * @return SalesTaxRule
      */
     public function create($object)
     {
         $response = parent::create($object);
-        return new Billy_SalesTaxRule($response->{$this->recordKeyPlural}[0]);
+        return new SalesTaxRule($response->{$this->recordKeyPlural}[0]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BillysBilling\Tests;
 
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\Exception\BillyException;
 
 /**
  * Class BillyExceptionTest
@@ -14,11 +14,11 @@ class BillyExceptionTest extends \PHPUnit_Framework_TestCase
     /**
      * Test that the SDK's exception class exists.
      *
-     * @throws Billy_Exception
+     * @throws BillyException
      */
     public function testBillyException()
     {
-//        $this->setExpectedException('Billy_Exception');
-//        throw new Billy_Exception();
+//        $this->setExpectedException('BillyException');
+//        throw new BillyException();
     }
 }

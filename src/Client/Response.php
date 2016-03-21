@@ -15,7 +15,7 @@
 
 namespace BillysBilling\Client;
 
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\Exception\BillyException;
 
 /**
  * BillysBilling: response.
@@ -25,7 +25,7 @@ use BillysBilling\Exception\Billy_Exception;
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_Response
+class Response
 {
     protected $status;
     protected $body;
@@ -70,13 +70,13 @@ class Billy_Response
      *
      * @return array Response from Billy API, e.g. id and success
      * or invoice object
-     * @throws Billy_Exception Error, Help URL and response
+     * @throws BillyException Error, Help URL and response
      */
     protected function interpretResponse($rawResponse)
     {
         $response = json_decode($rawResponse);
         if (!$response->meta->success) {
-            throw new Billy_Exception(
+            throw new BillyException(
                 $response->errorMessage,
                 $response->helpUrl,
                 $rawResponse

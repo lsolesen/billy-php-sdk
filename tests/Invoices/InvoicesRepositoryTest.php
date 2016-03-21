@@ -1,79 +1,76 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mglaman
- * Date: 12/29/14
- * Time: 3:43 PM
- */
 
 namespace BillysBilling\Tests\Invoices;
 
-use BillysBilling\Client\Billy_Request;
-use BillysBilling\Exception\Billy_Exception;
-use BillysBilling\Invoices\Billy_Invoice;
-use BillysBilling\Invoices\Billy_InvoicesRepository;
-use BillysBilling\Invoices\Billy_InvoiceLine;
+use BillysBilling\Client\Request;
+use BillysBilling\Exception\Exception;
+use BillysBilling\Invoices\Invoice;
+use BillysBilling\Invoices\InvoicesRepository;
+use BillysBilling\Invoices\InvoiceLine;
 
-class InvoicesRepositoryTest extends \PHPUnit_Framework_TestCase {
+class InvoicesRepositoryTest extends \PHPUnit_Framework_TestCase
+{
     /**
-     * @var Billy_Request.
+     * @var Request.
      */
     protected $request;
 
     protected $api_key = '2603a3bf205f88d1fe6df7fb26c4ce91eea74fe4';
 
     /**
-     * @var Billy_Invoice[]
+     * @var Invoice[]
      */
     protected $invoices;
     /**
-     * @var Billy_InvoicesRepository
+     * @var InvoicesRepository
      */
     protected $invoicesRepository;
 
-    public function __construct() {
-        $this->request = new Billy_Request($this->api_key);
+    public function __construct()
+    {
+        $this->request = new Request($this->api_key);
     }
 
-    public function testInvoiceRepositoryConstruct() {
+    public function testInvoiceRepositoryConstruct()
+    {
         // Ensure that the AccountGroupsRepository can be initiated.
-        $repository = new Billy_InvoicesRepository($this->request);
+        $repository = new InvoicesRepository($this->request);
 
         $this->assertNotNull($repository, 'Able to initiate invoices repository');
 
         return $this->invoicesRepository = $repository;
     }
 
-    public function testCreateInvoice() {
-        $invoiceStub = new Billy_Invoice();
+    public function testCreateInvoice()
+    {
+        $invoiceStub = new Invoice();
         $invoiceStub
           ->setEntryDate(new \DateTime('now', new \DateTimeZone('UTC')))
           ->setPaymentTermsMode('net')
           ->setPaymentTermsDays(7)
           ->setContactID('d33H9E5QQcCJtcqCsI40NQ');
 
-        $testLine = new Billy_InvoiceLine();
+        $testLine = new InvoiceLine();
         $testLine->setProductID('1simCQJJSLuasLdWiyxUKg')
             ->setUnitPrice(10);
 
         $invoiceStub->setLines(array($testLine));
 
         $invoicesRepository = $this->testInvoiceRepositoryConstruct();
-        /** @var Billy_Invoice $createdInvoice */
+        /** @var Invoice $createdInvoice */
         $createdInvoice = $invoicesRepository->create($invoiceStub);
 
         try {
             $createdInvoice->getCreatedTime();
             $createdInvoice->getDueDate();
-        }
-        catch (Billy_Exception $e)
-        {
+        } catch (BillyException $e) {
             $this->fail('Failed to generate invoice');
         }
 
     }
 
-    public function testInvoicesRepositoryGetAll() {
+    public function testInvoicesRepositoryGetAll()
+    {
 
         $repository = $this->testInvoiceRepositoryConstruct();
         $results = $repository->getAll();
@@ -82,8 +79,9 @@ class InvoicesRepositoryTest extends \PHPUnit_Framework_TestCase {
         return $this->invoices = $results;
     }
 
-    public function testInvoiceRepositoryGetSingle() {
-        /** @var Billy_Invoice $firstContact */
+    public function testInvoiceRepositoryGetSingle()
+    {
+        /** @var Invoice $firstContact */
         $invoices = $this->testInvoicesRepositoryGetAll();
         $firstInvoice = end($invoices);
 

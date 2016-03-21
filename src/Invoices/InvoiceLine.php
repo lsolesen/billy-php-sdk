@@ -15,17 +15,17 @@
 
 namespace BillysBilling\Invoices;
 
-use BillysBilling\Billy_Entity;
+use BillysBilling\Entity;
 
 /**
- * Class Billy_InvoiceLine
+ * Class InvoiceLine
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_InvoiceLine extends Billy_Entity
+class InvoiceLine extends Entity
 {
     /**
      * Return the invoice line's invoice ID

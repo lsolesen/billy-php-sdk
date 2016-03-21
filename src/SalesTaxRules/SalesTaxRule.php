@@ -15,17 +15,17 @@
 
 namespace BillysBilling\SalesTaxRules;
 
-use BillysBilling\Billy_Entity;
+use BillysBilling\Entity;
 
 /**
- * Class Billy_AccountNature
+ * Class SalesTaxRule
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_SalesTaxRule extends Billy_Entity
+class SalesTaxRule extends Entity
 {
     /**
      * Returns the sale tax rule's ruleset ID.

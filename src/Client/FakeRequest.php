@@ -23,7 +23,7 @@ namespace BillysBilling\Client;
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_FakeRequest
+class FakeRequest
 {
     protected $accessToken;
     protected $outputFile = 'request.txt';

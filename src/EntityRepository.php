@@ -15,19 +15,19 @@
 
 namespace BillysBilling;
 
-use BillysBilling\Client\Billy_Client;
-use BillysBilling\Client\Billy_Response;
-use BillysBilling\Exception\Billy_Exception;
+use BillysBilling\Client\Client;
+use BillysBilling\Client\Response;
+use BillysBilling\Exception\Exception;
 
 /**
- * Class Billy_AccountsRepository
+ * Class EntityRepository
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_EntityRepository extends Billy_Client
+class EntityRepository extends Client
 {
     /**
      * API Endpoint URL
@@ -53,7 +53,7 @@ class Billy_EntityRepository extends Billy_Client
      * Returns all items for an object endpoint.
      *
      * @return object
-     * @throws Billy_Exception
+     * @throws BillyException
      */
     public function getAll()
     {
@@ -69,7 +69,7 @@ class Billy_EntityRepository extends Billy_Client
      * @param string $apiID API ID
      *
      * @return mixed
-     * @throws \BillysBilling\Exception\Billy_Exception
+     * @throws \BillysBilling\Exception\BillyException
      */
     public function getSingle($apiID)
     {
@@ -82,7 +82,7 @@ class Billy_EntityRepository extends Billy_Client
     /**
      * Create an item through an object endpoint.
      *
-     * @param Billy_Entity $object API Entity object
+     * @param Entity $object API Entity object
      *
      * @return mixed
      * @throws \Exception
@@ -104,7 +104,7 @@ class Billy_EntityRepository extends Billy_Client
     /**
      * Updates an item through an object endpoint.
      *
-     * @param Billy_Entity $object API Entity object
+     * @param Entity $object API Entity object
      *
      * @return mixed
      * @throws \Exception
@@ -129,7 +129,7 @@ class Billy_EntityRepository extends Billy_Client
      * @param string $apiID API ID
      *
      * @return mixed
-     * @throws \BillysBilling\Exception\Billy_Exception
+     * @throws \BillysBilling\Exception\BillyException
      */
     public function delete($apiID)
     {
@@ -144,11 +144,11 @@ class Billy_EntityRepository extends Billy_Client
      * @param \stdClass $body Object of response body
      *
      * @return $this
-     * @throws \BillysBilling\Exception\Billy_Exception
+     * @throws \BillysBilling\Exception\BillyException
      */
     protected function throwAPIException($body)
     {
-        throw new Billy_Exception(
+        throw new BillyException(
             $body->errorMessage,
             $body->helpURL
         );
@@ -157,10 +157,10 @@ class Billy_EntityRepository extends Billy_Client
     /**
      * Validates a returned response
      *
-     * @param Billy_Response $response API Response
+     * @param Response $response API Response
      *
      * @return $this
-     * @throws Billy_Exception
+     * @throws BillyException
      */
     protected function validateResponse($response)
     {

@@ -16,14 +16,14 @@
 namespace BillysBilling\Exception;
 
 /**
- * Class Billy_Exception
+ * Class BillyException
  *
  * @category  BillysBilling
  * @package   BillysBilling
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
-class Billy_Exception extends \Exception
+class BillyException extends \Exception
 {
     /**
      * Service help URL in reference to error.
