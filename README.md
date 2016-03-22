@@ -3,8 +3,23 @@
 
 PHP SDK for [Billy's Billing API](https://billysbilling.com/api) version 2 only from the Danish accounting program [Billy's Billing](http://www.billysbilling.dk/).
 
-## Examples
+## Getting started
 
-The API for this PHP-SDK is still in development. Use with care. Please see the test files in the tests directory at the moment.
+Before doing anything you should register yourself with Billy's Billing and get access credentials. 
 
-See examples on usage in the 'tests' directory.
+### Create a new client
+
+First you should create a client instance that is authorized with `api_key` or provided by BillysBilling. 
+
+```php5
+<?php
+    use BillysBilling\Client\Client as Billy_Client;
+    use BillysBilling\Client\Request as Billy_Request;
+
+    try {
+        $client = new Billy_Client(new Billy_Request($api_key));
+    } catch (Exception $e) {
+        //...
+    }
+?>
+```
