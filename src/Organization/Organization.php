@@ -1,31 +1,31 @@
 <?php
 /**
- * BillysBilling
+ * Billy
  *
  * PHP version 5
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  * @license   MIT Open Source License https://opensource.org/licenses/MIT
  * @version   GIT: <git_id>
- * @link      http://github.com/lsolesen/billysbilling
+ * @link      http://github.com/lsolesen/Billy
  */
 
-namespace BillysBilling\Organization;
+namespace Billy\Organization;
 
-use BillysBilling\Client\Client;
-use BillysBilling\Exception\Exception;
+use Billy\Client\Client;
+use Billy\Exception\BillyException;
 
 /**
  * Class Organization
  *
  * @todo: Convert to Entity
- * @link: https://billysbilling.com/api#v2organizations
+ * @link: https://Billy.com/api#v2organizations
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
@@ -42,7 +42,7 @@ class Organization
     /**
      * Initiates organization object
      *
-     * @param Client $client BillysBilling API Client
+     * @param Client $client Billy API Client
      *
      * @throws Exception
      */

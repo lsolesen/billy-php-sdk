@@ -1,29 +1,29 @@
 <?php
 /**
- * BillysBilling
+ * Billy
  *
  * PHP version 5
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  * @license   MIT Open Source License https://opensource.org/licenses/MIT
  * @version   GIT: <git_id>
- * @link      http://github.com/lsolesen/billysbilling
+ * @link      http://github.com/lsolesen/Billy
  */
 
-namespace BillysBilling;
+namespace Billy;
 
-use BillysBilling\Client\Client;
-use BillysBilling\Client\Response;
-use BillysBilling\Exception\Exception;
+use Billy\Client\Client;
+use Billy\Client\Response;
+use Billy\Exception\Exception;
 
 /**
  * Class EntityRepository
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
@@ -69,7 +69,7 @@ class EntityRepository extends Client
      * @param string $apiID API ID
      *
      * @return mixed
-     * @throws \BillysBilling\Exception\BillyException
+     * @throws \Billy\Exception\BillyException
      */
     public function getSingle($apiID)
     {
@@ -129,7 +129,7 @@ class EntityRepository extends Client
      * @param string $apiID API ID
      *
      * @return mixed
-     * @throws \BillysBilling\Exception\BillyException
+     * @throws \Billy\Exception\BillyException
      */
     public function delete($apiID)
     {
@@ -144,7 +144,7 @@ class EntityRepository extends Client
      * @param \stdClass $body Object of response body
      *
      * @return $this
-     * @throws \BillysBilling\Exception\BillyException
+     * @throws \Billy\Exception\BillyException
      */
     protected function throwAPIException($body)
     {

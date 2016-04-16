@@ -1,14 +1,14 @@
 <?php
 
-namespace BillysBilling\Tests;
+namespace Billy\Tests;
 
-use BillysBilling\Client\Client;
-use BillysBilling\Client\Request;
+use Billy\Client\Client;
+use Billy\Client\Request;
 
 /**
  * Class ClientTest
  *
- * @package BillysBilling
+ * @package Billy
  */
 class ClientTest extends \PHPUnit_Framework_TestCase
 {

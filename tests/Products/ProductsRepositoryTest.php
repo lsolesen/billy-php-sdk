@@ -1,11 +1,11 @@
 <?php
 
-namespace BillysBilling\Tests\Products;
+namespace Billy\Tests\Products;
 
-use BillysBilling\Client\Request;
-use BillysBilling\Exception\BillyException;
-use BillysBilling\Products\Product;
-use BillysBilling\Products\ProductsRepository;
+use Billy\Client\Request;
+use Billy\Exception\BillyException;
+use Billy\Products\Product;
+use Billy\Products\ProductsRepository;
 
 class ProductsRepositoryTest extends \PHPUnit_Framework_TestCase
 {

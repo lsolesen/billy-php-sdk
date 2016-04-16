@@ -1,19 +1,19 @@
 <?php
 
-namespace BillysBilling\Tests;
+namespace Billy\Tests;
 
-use BillysBilling\Client\Client;
-use BillysBilling\Client\Request;
-use BillysBilling\Organization\Organization;
+use Billy\Client\Client;
+use Billy\Client\Request;
+use Billy\Organization\Organization;
 
 class OrganizationTest extends \PHPUnit_Framework_TestCase
 {
 
     protected $api_key = '2603a3bf205f88d1fe6df7fb26c4ce91eea74fe4';
 
-  /**
-   * @var Organization
-   */
+    /**
+     * @var Organization
+     */
     protected $organizationObject;
 
     public function __construct()

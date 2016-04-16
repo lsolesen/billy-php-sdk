@@ -1,10 +1,9 @@
 <?php
 
-namespace BillysBilling\Tests\SalesTaxRules;
+namespace Billy\Tests\SalesTaxRules;
 
-use BillysBilling\Client\Request;
-use BillysBilling\SalesTaxRules\SalesTaxRuleset;
-use BillysBilling\SalesTaxRules\SalesTaxRulesetsRepository;
+use Billy\Client\Request;
+use Billy\SalesTaxRules\SalesTaxRulesetsRepository;
 
 class SalesTaxRulesetTest extends \PHPUnit_Framework_TestCase
 {

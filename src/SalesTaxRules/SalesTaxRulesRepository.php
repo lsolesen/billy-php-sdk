@@ -1,23 +1,23 @@
 <?php
 /**
- * BillysBilling
+ * Billy
  *
  * PHP version 5
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  * @license   MIT Open Source License https://opensource.org/licenses/MIT
  * @version   GIT: <git_id>
- * @link      http://github.com/lsolesen/billysbilling
+ * @link      http://github.com/lsolesen/Billy
  */
 
-namespace BillysBilling\SalesTaxRules;
+namespace Billy\SalesTaxRules;
 
-use BillysBilling\EntityRepository;
-use BillysBilling\Client\Request;
-use BillysBilling\Exception\Exception;
+use Billy\EntityRepository;
+use Billy\Client\Request;
+use Billy\Exception\Exception;
 
 /**
  * Class SalesTaxRulesRepository
@@ -26,8 +26,8 @@ use BillysBilling\Exception\Exception;
  *         "You need to filter the list by `rulesetId`, i.e. by using
  *        `GET /salesTaxRules?rulesetId=123`."
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */

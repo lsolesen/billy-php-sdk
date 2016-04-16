@@ -1,7 +1,7 @@
 {
-  "name": "lsolesen/billysbilling",
+  "name": "lsolesen/billy-php-sdk",
     "type": "library",
-    "description": "PHP-SDK to communicate with BillysBilling",
+    "description": "PHP-SDK to communicate with Billy (http://www.billy.dk)",
     "homepage": "http://github.com/lsolesen/billy-php-sdk",
     "license": "MIT",
     "authors": [
@@ -16,16 +16,17 @@
     ],
     "autoload": {
         "psr-4": {
-            "BillysBilling\\": "src/"
+            "Billy\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-          "BillysBilling\\Tests\\": "tests"
+          "Billy\\Tests\\": "tests"
         }
     },
     "require": {
-        "php": ">=5.3.2"
+        "php": ">=5.3.2",
+        "lib/curl": "*"
     },
     "require-dev": {
         "php": ">=5.5.0",
