@@ -1,12 +1,12 @@
 <?php
 
-namespace BillysBilling\Tests;
+namespace Billy\Tests;
 
-use BillysBilling\Client\Client;
-use BillysBilling\Client\Request;
-use BillysBilling\Contacts\Contact;
-use BillysBilling\Contacts\ContactRepository;
-use BillysBilling\Exception\BillyException;
+use Billy\Client\Client;
+use Billy\Client\Request;
+use Billy\Contacts\Contact;
+use Billy\Contacts\ContactRepository;
+use Billy\Exception\BillyException;
 
 class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase
 {
@@ -93,14 +93,12 @@ class ContactRepositoryListTest extends \PHPUnit_Framework_TestCase
     protected function updateContact($contact)
     {
         if ($contact instanceof Contact) {
-
             $contact->set('fax', '555-444-3333');
 
             $repository = $this->testContactRepositoryConstruct();
             $repository->update($contact);
             $updated_contact = $repository->getSingle($contact->getID());
             $this->assertEquals('555-444-3333', $updated_contact->get('fax'));
-
         } else {
             $this->fail('Test contact not defined');
         }

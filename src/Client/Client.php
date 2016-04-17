@@ -1,25 +1,25 @@
 <?php
 /**
- * BillysBilling
+ * Billy
  *
  * PHP version 5
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  * @license   MIT Open Source License https://opensource.org/licenses/MIT
  * @version   GIT: <git_id>
- * @link      http://github.com/lsolesen/billysbilling
+ * @link      http://github.com/lsolesen/Billy
  */
 
-namespace BillysBilling\Client;
+namespace Billy\Client;
 
 /**
  * Class Client
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */

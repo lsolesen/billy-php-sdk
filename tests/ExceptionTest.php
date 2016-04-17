@@ -1,13 +1,13 @@
 <?php
 
-namespace BillysBilling\Tests;
+namespace Billy\Tests;
 
-use BillysBilling\Exception\BillyException;
+use Billy\Exception\BillyException;
 
 /**
  * Class BillyExceptionTest
  *
- * @package BillysBilling
+ * @package Billy
  */
 class BillyExceptionTest extends \PHPUnit_Framework_TestCase
 {

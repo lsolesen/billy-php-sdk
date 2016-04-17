@@ -1,11 +1,9 @@
 <?php
 
-namespace BillysBilling\Tests\Accounts;
+namespace Billy\Tests\Accounts;
 
-use BillysBilling\Client\Request;
-use BillysBilling\Accounts\Account;
-use BillysBilling\Accounts\AccountGroupsRepository;
-use BillysBilling\Accounts\AccountsRepository;
+use Billy\Client\Request;
+use Billy\Accounts\AccountGroupsRepository;
 
 class AccountsGroupTest extends \PHPUnit_Framework_TestCase
 {
@@ -20,6 +18,7 @@ class AccountsGroupTest extends \PHPUnit_Framework_TestCase
      * @var Account[]
      */
     protected $accountGroups;
+
     /**
      * @var AccountGroupsRepository
      */

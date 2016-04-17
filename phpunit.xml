@@ -10,7 +10,7 @@
          bootstrap="vendor/autoload.php"
         >
     <testsuites>
-        <testsuite name="BillysBilling API v2 Testing Suite">
+        <testsuite name="Billy API v2 Testing Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>

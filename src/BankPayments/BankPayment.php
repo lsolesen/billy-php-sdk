@@ -1,27 +1,27 @@
 <?php
 /**
- * BillysBilling
+ * Billy
  *
  * PHP version 5
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  * @license   MIT Open Source License https://opensource.org/licenses/MIT
  * @version   GIT: <git_id>
- * @link      http://github.com/lsolesen/billysbilling
+ * @link      http://github.com/lsolesen/Billy
  */
 
-namespace BillysBilling\BankPayments;
+namespace Billy\BankPayments;
 
-use BillysBilling\Entity;
+use Billy\Entity;
 
 /**
  * Class BankPayment
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */

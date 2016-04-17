@@ -1,12 +1,11 @@
 <?php
 
-namespace BillysBilling\Tests\Invoices;
+namespace Billy\Tests\Invoices;
 
-use BillysBilling\Client\Request;
-use BillysBilling\Exception\Exception;
-use BillysBilling\Invoices\Invoice;
-use BillysBilling\Invoices\InvoicesRepository;
-use BillysBilling\Invoices\InvoiceLine;
+use Billy\Client\Request;
+use Billy\Invoices\Invoice;
+use Billy\Invoices\InvoiceLine;
+use Billy\Invoices\InvoicesRepository;
 
 class InvoicesRepositoryTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,28 +1,28 @@
 <?php
 /**
- * BillysBilling
+ * Billy
  *
  * PHP version 5
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  * @license   MIT Open Source License https://opensource.org/licenses/MIT
  * @version   GIT: <git_id>
- * @link      http://github.com/lsolesen/billysbilling
+ * @link      http://github.com/lsolesen/Billy
  */
 
-namespace BillysBilling\Invoices;
+namespace Billy\Invoices;
 
-use BillysBilling\Entity;
-use BillysBilling\Exception\BillyException;
+use Billy\Entity;
+use Billy\Exception\BillyException;
 
 /**
  * Class Invoice
  *
- * @category  BillysBilling
- * @package   BillysBilling
+ * @category  Billy
+ * @package   Billy
  * @author    Lars Olesen <lars@intraface.dk>
  * @copyright 2014 Lars Olesen
  */
@@ -454,7 +454,7 @@ class Invoice extends Entity
      * @param InvoiceLine[] $invoiceLines An array of InvoiceLine objects
      *
      * @return $this
-     * @throws \BillysBilling\Exception\BillyException
+     * @throws \Billy\Exception\BillyException
      */
     public function setLines($invoiceLines)
     {
