@@ -13,11 +13,13 @@ Before doing anything you should register yourself with Billy and get access cre
 
 Simply add a dependency on lsolesen/billy-php-sdk to your project's `composer.json` file if you use Composer to manage the dependencies of your project. Here is a minimal example of a composer.json file that just defines a dependency on Billy PHP SDK 2.1:
 
+```
 {
     "require": {
         "lsolesen/billy-php-sdk": "2.1.*"
     }
 }
+```
 
 After running `composer install`, you can take advantage of Composer's autoloader in `vendor/autoload.php`.
 
