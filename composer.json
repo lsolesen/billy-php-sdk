@@ -2,7 +2,7 @@
   "name": "lsolesen/billysbilling",
     "type": "library",
     "description": "PHP-SDK to communicate with BillysBilling",
-    "homepage": "http://github.com/lsolesen/billysbilling",
+    "homepage": "http://github.com/lsolesen/billy-php-sdk",
     "license": "MIT",
     "authors": [
         {
