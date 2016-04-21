@@ -29,7 +29,6 @@
         "lib/curl": "*"
     },
     "require-dev": {
-        "php": ">=5.5.0",
         "phpunit/phpunit": "4.4.*",
         "squizlabs/php_codesniffer": "2.*",
         "satooshi/php-coveralls": "dev-master"
