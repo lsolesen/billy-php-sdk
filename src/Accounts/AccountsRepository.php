@@ -17,7 +17,6 @@ namespace Billy\Accounts;
 
 use Billy\EntityRepository;
 use Billy\Client\Request;
-use Billy\Exception\Exception;
 
 /**
  * Class AccountsRepository

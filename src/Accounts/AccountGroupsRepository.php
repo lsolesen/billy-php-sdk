@@ -17,7 +17,6 @@ namespace Billy\Accounts;
 
 use Billy\EntityRepository;
 use Billy\Client\Request;
-use Billy\Exception\Exception;
 
 /**
  * Class AccountGroupsRepository
@@ -46,7 +45,7 @@ class AccountGroupsRepository extends EntityRepository
      * Returns all account groups.
      *
      * @return AccountGroup[]
-     * @throws Exception
+     * @throws BillyException
      */
     public function getAll()
     {

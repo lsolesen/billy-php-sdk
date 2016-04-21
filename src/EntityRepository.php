@@ -17,7 +17,7 @@ namespace Billy;
 
 use Billy\Client\Client;
 use Billy\Client\Response;
-use Billy\Exception\Exception;
+use Billy\Exception\BillyException;
 
 /**
  * Class EntityRepository

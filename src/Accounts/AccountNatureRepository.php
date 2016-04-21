@@ -17,7 +17,6 @@ namespace Billy\Accounts;
 
 use Billy\EntityRepository;
 use Billy\Client\Request;
-use Billy\Exception\Exception;
 
 /**
  * Class AccountNaturesRepository
@@ -46,7 +45,7 @@ class AccountNaturesRepository extends EntityRepository
      * Returns all account Natures.
      *
      * @return AccountNature[]
-     * @throws Exception
+     * @throws BillyException
      */
     public function getAll()
     {
