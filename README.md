@@ -129,6 +129,7 @@ try {
 
     $new_invoice = new Billy_Invoice();
     $new_invoice->setType('invoice')
+        ->setOrderNumber($order_number)
         ->setContactID($contact->getID())
         ->setContactMessage($contact_message)
         ->setEntryDate($entry_date)

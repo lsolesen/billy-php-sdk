@@ -480,4 +480,29 @@ class Invoice extends Entity
     {
         return $this->get('dueDate');
     }
+
+    /**
+     * Gets order number.
+     *
+     * @param integer $order_number Order number
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getOrderNumber()
+    {
+        return $this->get('orderNo');
+    }
+
+    /**
+     * Sets order number.
+     *
+     * @param integer $order_number Order number
+     *
+     * @return $this
+     */
+    public function setOrderNumber($order_number)
+    {
+        return $this->set('orderNo', $order_number);
+    }
 }
