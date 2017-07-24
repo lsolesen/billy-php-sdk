@@ -120,12 +120,16 @@ try {
 use Billy\Invoices\InvoicesRepository;
 
 try {
+    $invoice_line_items = array();
+
     $invoice_line = new InvoiceLine();
     $invoice_line->setProductID($product->getID())
         ->setQuantity(4)
         ->set('priority', $priority)
         ->setDescription('My description')
         ->setUnitPrice(20.25);
+
+    $invoice_line_items[] = $invoice_line->toArray();
 
     $new_invoice = new Billy_Invoice();
     $new_invoice->setType('invoice')
@@ -135,7 +139,7 @@ try {
         ->setEntryDate($entry_date)
         ->setPaymentTermsDays(8)
         ->setCurrencyID('DKK')
-        ->set('lines', $invoice_line->toArray(););
+        ->set('lines', $invoice_line_items);
 
     $created_invoice = $repository->create($new_invoice);
     $billy_invoice_id = $created_invoice->getID();
